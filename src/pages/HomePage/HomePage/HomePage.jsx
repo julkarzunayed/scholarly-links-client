@@ -5,16 +5,16 @@ import { TfiMenu } from 'react-icons/tfi';
 const HomePage = () => {
     return (
         <div>
-            Home
-            
             <div className="drawer drawer-end">
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     {/* Page content here */}
                     <Banner></Banner>
-                    <label htmlFor="my-drawer-4" className="border">
+
+
+                    {/* <label htmlFor="my-drawer-4" className="border">
                         <TfiMenu />
-                    </label>
+                    </label> */}
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
