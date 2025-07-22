@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import NavBar from '../../pages/HomePage/shared/NavBar/NavBar';
 import useAuth from '../../hooks/useAuth';
+import Footer from '../../pages/HomePage/shared/Footer/Footer';
 
 const RootLayout = () => {
     const { user } = useAuth();
@@ -13,7 +14,7 @@ const RootLayout = () => {
                     {/* Page content here */}
                     <NavBar></NavBar>
                     <Outlet></Outlet>
-
+                    <Footer></Footer>
                     {/* <label htmlFor="my-drawer-4" className="border">
                         <TfiMenu />
                     </label> */}
