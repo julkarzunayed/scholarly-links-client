@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import useAxios from '../../../hooks/useAxios';
+// import useAxios from '../../../hooks/useAxios';
 import useAuth from '../../../hooks/useAuth';
 
 // import SocialLogin from '../../shared/SocialLogin/SocialLogin';
@@ -21,7 +21,7 @@ const Register = () => {
     const location = useLocation();
     // const [profilePic, setProfilePic] = useState('');
     const [imageFile, setImageFile] = useState(null);
-    const axiosInstance = useAxios()
+    // const axiosInstance = useAxios()
     const [loading, setLoading] = useState(false);
     const [fileError, setFileError] = useState('');
 
@@ -82,12 +82,12 @@ const Register = () => {
                 res
 
                 //Create user in the DB
-                const userInfo = {
-                    email: data.email,
-                    role: 'user',
-                    created_at: new Date().toISOString(),
-                    last_log_in: new Date().toISOString(),
-                };
+                // const userInfo = {
+                //     email: data.email,
+                //     role: 'user',
+                //     created_at: new Date().toISOString(),
+                //     last_log_in: new Date().toISOString(),
+                // };
                 // const userRes = await axiosInstance.post('/users', userInfo);
                 // console.log(userRes.data)
 
@@ -123,7 +123,7 @@ const Register = () => {
         <div className=' w-full flex items-center justify-center'>
             <div className="card-body bg-base-300 rounded-2xl shadow-[0_0px_15px_20px_rgba(80,247,255,0.05),0_0px_5px_5px_rgba(202,235,102,0.1)] max-w-sm w-full">
                 <h1 className='text-4xl font-bold'>Create an account</h1>
-                <p className="text-lg font-semibold">Register withe Profast</p>
+                <p className="text-lg font-semibold">Register withe ScholarlyLink</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <fieldset className="fieldset">
 
