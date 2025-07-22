@@ -1,6 +1,6 @@
 import React from 'react';
 import { TfiMenu } from 'react-icons/tfi';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import ScholarlyLinkLogo from '../../../../components/ScholarlyLinkLogo/ScholarlyLinkLogo';
 import useAuth from '../../../../hooks/useAuth';
 
@@ -32,17 +32,19 @@ const NavBar = () => {
 
                         </div>
                         :
-                        <button className='btn btn-sm btn-secondary'>
+                        <Link
+                            to={'/login'}
+                            className='btn btn-sm btn-primary text-gray-700'>
                             Log In
-                        </button>
+                        </Link>
                 }
 
                 <label htmlFor="my-drawer-4" className="btn btn-sm btn-ghost lg:hidden">
                     <TfiMenu size={30} />
                 </label>
-                
+
             </div>
-            
+
         </div>
     );
 };

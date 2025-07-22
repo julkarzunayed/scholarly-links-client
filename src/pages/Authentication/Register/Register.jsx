@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-// import useAxios from '../../../hooks/useAxios';
+import useAxios from '../../../hooks/useAxios';
 import useAuth from '../../../hooks/useAuth';
 
 // import SocialLogin from '../../shared/SocialLogin/SocialLogin';
@@ -21,7 +21,7 @@ const Register = () => {
     const location = useLocation();
     // const [profilePic, setProfilePic] = useState('');
     const [imageFile, setImageFile] = useState(null);
-    // const axiosInstance = useAxios()
+    const axiosInstance = useAxios()
     const [loading, setLoading] = useState(false);
     const [fileError, setFileError] = useState('');
 
@@ -81,15 +81,15 @@ const Register = () => {
                 // console.log(res.user)
                 res
 
-                //Create user in the DB
-                // const userInfo = {
-                //     email: data.email,
-                //     role: 'user',
-                //     created_at: new Date().toISOString(),
-                //     last_log_in: new Date().toISOString(),
-                // };
-                // const userRes = await axiosInstance.post('/users', userInfo);
-                // console.log(userRes.data)
+                // Create user in the DB
+                const userInfo = {
+                    email: data.email,
+                    role: 'user',
+                    created_at: new Date().toISOString(),
+                    last_log_in: new Date().toISOString(),
+                };
+                const userRes = await axiosInstance.post('/users', userInfo);
+                console.log(userRes.data)
 
                 const profileInfo = {
                     displayName: data.name,
@@ -99,6 +99,11 @@ const Register = () => {
                 updateUserProfile(profileInfo)
                     .then(() => {
                         setLoading(false)
+                        Swal.fire({
+                            title: "Successfully Register",
+                            icon: "success",
+
+                        });
                     }).catch(error => {
                         setLoading(false)
                         console.log(error)
