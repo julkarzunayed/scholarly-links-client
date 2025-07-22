@@ -8,6 +8,8 @@ import Login from '../pages/Authentication/LogIn/Login';
 import Register from '../pages/Authentication/Register/Register';
 import ForbiddenPage from '../pages/ForbiddenPage/ForbiddenPage';
 import Error from '../pages/Error/Error';
+import PrivetRouter from '../routers/PrivetRouter';
+import DashboardLayout from '../layouts/DashboardLayout/DashboardLayout';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +25,12 @@ const router = createBrowserRouter([
                 Component: AllScholarship,
             }
         ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivetRouter>
+            <DashboardLayout />
+        </PrivetRouter>
     },
     {
         Component: AuthLayout,

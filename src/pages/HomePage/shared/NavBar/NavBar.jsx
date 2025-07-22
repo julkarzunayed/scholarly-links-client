@@ -7,6 +7,7 @@ import useAuth from '../../../../hooks/useAuth';
 const links = <>
     <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/allScholarship'}>All Scholarships</NavLink></li>
+    <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
     <li><NavLink to={''}>About</NavLink></li>
 </>
 
