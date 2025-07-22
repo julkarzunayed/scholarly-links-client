@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import useAuth from '../../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAxios from '../../../hooks/useAxios';
-import SocialLogin from '../../shared/SocialLogin/SocialLogin';
+import useAuth from '../../../hooks/useAuth';
+
+// import SocialLogin from '../../shared/SocialLogin/SocialLogin';
+
+
+
+// pattern: {
+//     value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])/,
+//         message: "Password must contain : - a number, - an uppercase letter, - a lowercase letter, - and a special character"
+// }
 
 const Register = () => {
     const { createUser, updateUserProfile } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const [profilePic, setProfilePic] = useState('');
+    // const [profilePic, setProfilePic] = useState('');
+    const [imageFile, setImageFile] = useState(null);
     const axiosInstance = useAxios()
+    const [loading, setLoading] = useState(false);
+    const [fileError, setFileError] = useState('');
 
     const {
         register,
@@ -20,7 +31,51 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = data => {
+    console.log(errors)
+    const onImageFileSelect = (e) => {
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append('image', file);
+        setImageFile(formData)
+    }
+    const uploadImageToImageBB = async () => {
+        // const image = e.target.files[0];
+        // console.log(image)
+        // const formData = new FormData();
+        // formData.append('image', image);
+
+        const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imagebb_key}`
+
+        const imageBBRes = await axios.post(url, imageFile)
+        if (imageBBRes.data.status === 200) {
+            return (imageBBRes.data.data.url);
+        }
+        else if (!imageBBRes.data.status === 200) {
+            return null
+        }
+
+    }
+
+    const onSubmit = async (data) => {
+        setFileError('')
+        if (imageFile === null) {
+            setFileError('Select Profile Image File');
+            return;
+        }
+        setLoading(true)
+        const profilePic = await uploadImageToImageBB();
+
+        if (profilePic === null) {
+            setLoading(false)
+            Swal.fire({
+                title: "Profile Image Failed!",
+                text: 'There might some error occurred uploading Image',
+                icon: "error",
+
+            });
+            return
+        }
+
         createUser(data.email, data.password)
             .then(async (res) => {
                 // console.log(res.user)
@@ -33,8 +88,8 @@ const Register = () => {
                     created_at: new Date().toISOString(),
                     last_log_in: new Date().toISOString(),
                 };
-                const userRes = await axiosInstance.post('/users', userInfo);
-                console.log(userRes.data)
+                // const userRes = await axiosInstance.post('/users', userInfo);
+                // console.log(userRes.data)
 
                 const profileInfo = {
                     displayName: data.name,
@@ -43,47 +98,26 @@ const Register = () => {
                 // update user info from firebase
                 updateUserProfile(profileInfo)
                     .then(() => {
-
+                        setLoading(false)
                     }).catch(error => {
+                        setLoading(false)
                         console.log(error)
                     }); // -- profile update end
 
                 navigate(location.state?.from || '/');
-                console.log(profileInfo)
             })
             .catch(err => {
                 console.error(err)
+                setLoading(false)
                 if (err.code === 'auth/email-already-in-use') {
                     Swal.fire({
                         title: "Email already registered!",
                         icon: "error",
-                        
+
                     });
                 }
 
             })
-    }
-    const onImageFileSelect = async (e) => {
-        const image = e.target.files[0];
-        console.log(image)
-        const formData = new FormData();
-        formData.append('image', image);
-
-        const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imagebb_key}`
-
-        const imageBBRes = await axios.post(url, formData)
-        if (imageBBRes.data.status === 200) {
-            setProfilePic(imageBBRes.data.data.url);
-        }
-        else if (!imageBBRes.data.status === 200) {
-            Swal.fire({
-                icon: "error",
-                title: "Image upload failed",
-                text: 'There might some error while uploading image',
-                showConfirmButton: true,
-            });
-        }
-
     }
     return (
         <div className=' w-full flex items-center justify-center'>
@@ -104,19 +138,29 @@ const Register = () => {
                             })
                             }
                             className="input w-full"
-                            placeholder="Email" />
+                            placeholder="Your Name" />
                         {
                             errors?.name?.type === 'required' &&
                             <p role='alert' className="text-red-500 ">Name is required</p>
                         }
 
                         {/* Photo */}
-                        <label className="label">Photo</label>
+                        <label className="label">Profile Picture</label>
                         <input
                             onChange={onImageFileSelect}
                             type="file"
-                            className="file-input file-input-success" />
-
+                            className="file-input file-input-secondary" />
+                        {
+                            fileError && <p className="text-red-500">
+                                {fileError}
+                            </p>
+                        }
+                        {
+                            errors?.file?.type === 'required' &&
+                            <p role='alert' className="text-red-500 ">
+                                Select Profile Image File
+                            </p>
+                        }
 
                         {/* Email */}
                         <label className="label">Email</label>
@@ -146,10 +190,7 @@ const Register = () => {
                                     value: 6,
                                     message: 'Password must be at least 6 character long.'
                                 },
-                                pattern: {
-                                    value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])/,
-                                    message: "Password must contain : - a number, - an uppercase letter, - a lowercase letter, - and a special character"
-                                }
+
                             })
                             }
                             className="input w-full"
@@ -164,7 +205,15 @@ const Register = () => {
                                 <Link className='btn btn-link text-blue-400' to={`/login`}>Login</Link>
                             </p>
                         </div>
-                        <button className="btn btn-primary text-black mt-4">Register</button>
+                        <button
+                            disabled={loading}
+                            className="btn btn-primary text-gray-700 mt-4">
+                            Register
+                            {
+                                loading && <span className="loading loading-spinner loading-md"></span>
+                            }
+
+                        </button>
                     </fieldset>
                 </form>
                 {/* <SocialLogin></SocialLogin> */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TfiMenu } from 'react-icons/tfi';
 import { NavLink } from 'react-router';
+import ScholarlyLinkLogo from '../../../../components/ScholarlyLinkLogo/ScholarlyLinkLogo';
 
 const links = <>
     <li><NavLink to={'/'}>Home</NavLink></li>
@@ -12,11 +13,7 @@ const NavBar = () => {
 
     return (
         <div className='px-2 py-2 border border-base-300 shadow-sm sm:py-3 flex justify-between items-center'>
-            <h2 className="text-lg font-bold sm:text-xl md:text-2xl">
-                Scholarly
-                <span className='text-blue-600 font-black'>L</span>
-                inks
-            </h2>
+            <ScholarlyLinkLogo></ScholarlyLinkLogo>
             <div className="hidden lg:flex gap-1 ">
                 <ul className='flex gap-3'>
                     {links}
