@@ -10,6 +10,7 @@ import ForbiddenPage from '../pages/ForbiddenPage/ForbiddenPage';
 import Error from '../pages/Error/Error';
 import PrivetRouter from '../routers/PrivetRouter';
 import DashboardLayout from '../layouts/DashboardLayout/DashboardLayout';
+import MyProfile from '../pages/Dashboard/MyProfile/MyProfile';
 
 const router = createBrowserRouter([
     {
@@ -30,7 +31,19 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivetRouter>
             <DashboardLayout />
-        </PrivetRouter>
+        </PrivetRouter>,
+        children: [
+            {
+                index: true,
+                
+            },
+            {
+                path: 'myProfile',
+                element: <PrivetRouter>
+                    <MyProfile/>
+                </PrivetRouter>
+            }
+        ]
     },
     {
         Component: AuthLayout,

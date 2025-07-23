@@ -18,8 +18,8 @@
 @plugin "daisyui/theme" {
   name: "dark";
   /* default: true; */
-  --color-primary: #007ea8;
-  --color-secondary: #3f835b;
+  --color-primary: #57d748;
+  --color-secondary: #519cf0;
   --color-primary-content: #D1D5DB;
   --color-secondary-content: white;
   --color-tertiary-content: #D1D5DB;
@@ -34,5 +34,5 @@
 }
 
 .active{
-    background: lightgray;
+    background: oklch(0% 0 0 / 0.322);
 }
