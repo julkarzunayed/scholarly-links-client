@@ -31,7 +31,6 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    console.log(errors)
     const onImageFileSelect = (e) => {
         const file = e.target.files[0];
         const formData = new FormData();

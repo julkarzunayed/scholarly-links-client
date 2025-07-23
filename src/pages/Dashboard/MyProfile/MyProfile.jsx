@@ -103,7 +103,7 @@ const MyProfile = () => {
                                 style={{
                                     backgroundImage: `url(${user?.photoURL})`
                                 }}
-                                className="mask mx-auto mask-squircle w-44 bg-center bg-contain ">
+                                className="mask mx-auto mask-squircle w-44 bg-center bg-cover">
                             </div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@ const MyProfile = () => {
                 }
                 {
                     !applyStatusLoading && (
-                        applyData?.status === 'pending' &&
+                        applyData?.status === 'pending' || applyData?.status === 'rejected' &&
 
                         <div className="">
                             <p className=" mt-3 mb-1 ">
@@ -184,7 +184,7 @@ const MyProfile = () => {
                                     <button
                                         title='Cancel Application'
                                         onClick={handleCancelScholarshipApply}
-                                        className='btn btn-sm btn-warning'>
+                                        className={`btn btn-sm btn-warning ${applyData?.status === 'rejected' && 'hidden'}`}>
                                         Cancel
                                     </button>
                                 </div>

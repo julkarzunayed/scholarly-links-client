@@ -44,6 +44,7 @@ const DashboardLayout = () => {
                     <li><NavLink to={'/dashboard'}>Home</NavLink></li>
                     <li><NavLink to={'/myApplications'}>My Applications</NavLink></li>
                     <li><NavLink to={'/myReviews'}>My Reviews</NavLink></li>
+                    <li><NavLink to={'/dashboard/pendingPublishersApplications'}>Pending Publisher Applications</NavLink></li>
                     <li><NavLink to={'/dashboard/myProfile'}>My Profile</NavLink></li>
                     <li><NavLink to={'/'}>Home</NavLink></li>
                 </ul>

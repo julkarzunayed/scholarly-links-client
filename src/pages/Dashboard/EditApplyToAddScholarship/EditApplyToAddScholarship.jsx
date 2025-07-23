@@ -5,6 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link, useNavigate } from 'react-router';
 import useCheckApplicationOfPublisher from '../../../hooks/useCheckApplicationOfPublisher';
+import ForbiddenPage from '../../ForbiddenPage/ForbiddenPage';
 
 const EditApplyToAddScholarship = () => {
 
@@ -21,13 +22,17 @@ const EditApplyToAddScholarship = () => {
         formState: { errors },
     } = useForm();
 
+
     if (authLoading && applyStatusLoading) {
         return <LoadingPage />
     }
 
+    if (!applyData?.email || applyData?.status !== 'pending' || applyData?.status === 'not_applied') {
+        return <ForbiddenPage />
+    }
+
     const onSubmit = async (data) => {
         setLoading(true)
-        console.log(data)
         const applicationData = {
             phone_number: data.phone_number,
             institute_name: data.institute_name,
@@ -50,7 +55,7 @@ const EditApplyToAddScholarship = () => {
             }
             if (result.isConfirmed) {
                 const result = await axiosInstance.patch(`/publishers/apply?email=${user.email}`, applicationData)
-                
+
                 if (result.data.modifiedCount) {
                     Swal.fire({
                         title: "Submitted Successfully!",
@@ -59,7 +64,7 @@ const EditApplyToAddScholarship = () => {
                                 Your application updated successfully.
                                 <br/>
                                 <br/>
-                                It will verified by <b>ScholarlyLink</b> authority.
+                                It will be verified by <b>ScholarlyLink</b> authority.
                             `,
                     }).then(async (result) => {
                         if (result.isConfirmed) {

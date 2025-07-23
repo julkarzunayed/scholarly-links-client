@@ -13,6 +13,7 @@ import DashboardLayout from '../layouts/DashboardLayout/DashboardLayout';
 import MyProfile from '../pages/Dashboard/MyProfile/MyProfile';
 import ApplyToAddScholarship from '../pages/Dashboard/ApplyToAddScholarship/ApplyToAddScholarship';
 import EditApplyToAddScholarship from '../pages/Dashboard/EditApplyToAddScholarship/EditApplyToAddScholarship';
+import PendingPublishersApplications from '../pages/Dashboard/PendingPublishersApplications/PendingPublishersApplications';
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: 'editApplyToAddScholarship',
                 Component: EditApplyToAddScholarship
+            },
+            {
+                path: 'pendingPublishersApplications',
+                element: <PendingPublishersApplications/>
             }
         ]
     },
