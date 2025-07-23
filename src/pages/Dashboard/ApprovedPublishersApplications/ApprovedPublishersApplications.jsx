@@ -9,15 +9,15 @@ import { ISoTimeToDate } from '../../../utils/helper';
 import Swal from 'sweetalert2';
 import { GiEmptyMetalBucketHandle, GiEmptyWoodBucketHandle } from "react-icons/gi";
 
-const PendingPublishersApplications = () => {
+const ApprovedPublishersApplications = () => {
     const axiosInstance = useAxiosSecure();
     const { user, loading: authLoading } = useAuth();
     const queryClient = useQueryClient()
 
     const { data: publishersData, isLoading, isPending } = useQuery({
-        queryKey: ['pending_publishers_application', user?.email],
+        queryKey: ['approved_publishers_application', user?.email],
         queryFn: async () => {
-            const res = await axiosInstance.get(`/publishers/apply?userEmail=${user?.email}&status=pending`)
+            const res = await axiosInstance.get(`/publishers/apply?userEmail=${user?.email}&status=approved`)
 
             if (res.status === 204) {
                 return [];
@@ -43,7 +43,7 @@ const PendingPublishersApplications = () => {
                 'pending_publishers_application',
                 'approved_publishers_application',
                 'rejected_publishers_application'
-            ])
+             ])
         }
     })
 
@@ -51,46 +51,33 @@ const PendingPublishersApplications = () => {
         console.log(email)
         Swal.fire({
             icon: 'question',
-            title: "Do you want to <strong>approve</strong> apply <br/> or <strong>Reject</strong> ?",
-            showDenyButton: true,
+            title: "Do you want to <strong>Reject</strong> Publisher?",
             showCancelButton: true,
             cancelButtonText: 'X',
-            confirmButtonText: "Approve",
-            denyButtonText: `Reject`
+            confirmButtonText: "Reject",
+            confirmButtonColor: 'red'
         }).then(async (result) => {
             // check chosen option
             if (result.isConfirmed) {
                 const result = await updatePublisherApplication(
-                    { email, status: 'approved' }
+                    { email, status: 'rejected' }
                 )
                 console.log('Approved', result)
                 if (result.modifiedCount) {
                     const res = await axiosInstance.patch(`/users?email=${email}`, {
-                        role: 'publisher',
+                        role: 'user',
                     })
                     console.log(res.data);
                     if (res.data.modifiedCount) {
                         Swal.fire({
-                            title: "Approved!",
+                            title: "Rejected!",
                             text: "Application Approved successfully!",
                             icon: "info"
                         });
                     }
 
                 }
-            } else if (result.isDenied) {
-                const result = await updatePublisherApplication(
-                    { email, status: 'rejected' }
-                )
-                console.log(result)
-                if (result.modifiedCount) {
-                    Swal.fire({
-                        title: "Rejected!",
-                        text: "Application Rejected successfully!",
-                        icon: "warning"
-                    });
-                }
-            }
+            } 
         });
     }
 
@@ -101,8 +88,8 @@ const PendingPublishersApplications = () => {
 
     return (
         <div className="overflow-x-auto pt-10 p-1 ">
-            <h1 className="text-center mb-3 text-4xl font-bold font-playfair-display">
-                Publisher Applications
+            <h1 className="text-center mb-3 text-4xl font-bold font-playfair-display text-green-600">
+                Approved Publisher Applications
             </h1>
             {
                 publishersData.length !== 0 ?
@@ -143,7 +130,7 @@ const PendingPublishersApplications = () => {
                                                     </div>
                                                     <div className="text-sm opacity-50">
                                                         <span className='font-semibold'>Status: </span>
-                                                        <span className="border border-blue-300 text-gray-800 font-semibold bg-blue-200 py-0.5 px-3 rounded-2xl">
+                                                        <span className="border border-green-300 text-gray-800 font-semibold bg-green-200 py-0.5 px-3 rounded-2xl">
                                                             {publisher?.status}
                                                         </span>
                                                     </div>
@@ -168,7 +155,7 @@ const PendingPublishersApplications = () => {
                                         <th>
                                             <button
                                                 onClick={() => handleTakeAction(publisher?.email)}
-                                                className="btn btn-primary btn-sm text-lg">
+                                                className="btn btn-warning btn-sm text-lg">
                                                 Action
                                             </button>
                                         </th>
@@ -196,4 +183,4 @@ const PendingPublishersApplications = () => {
     );
 };
 
-export default PendingPublishersApplications;
+export default ApprovedPublishersApplications;

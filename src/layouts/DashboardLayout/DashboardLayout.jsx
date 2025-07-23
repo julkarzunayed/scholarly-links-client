@@ -38,13 +38,15 @@ const DashboardLayout = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-base-content min-h-full w-64 p-4">
+                <ul className="menu bg-base-200 text-base-content min-h-full w-72 p-4">
                     {/* Sidebar content here */}
                     <li><ScholarlyLinkLogo/></li>
                     <li><NavLink to={'/dashboard'}>Home</NavLink></li>
                     <li><NavLink to={'/myApplications'}>My Applications</NavLink></li>
                     <li><NavLink to={'/myReviews'}>My Reviews</NavLink></li>
                     <li><NavLink to={'/dashboard/pendingPublishersApplications'}>Pending Publisher Applications</NavLink></li>
+                    <li><NavLink to={'/dashboard/approvedPublishersApplications'}>Approved Publisher Applications</NavLink></li>
+                    <li><NavLink to={'/dashboard/rejectedPublishersApplications'}>Rejected Publisher Applications</NavLink></li>
                     <li><NavLink to={'/dashboard/myProfile'}>My Profile</NavLink></li>
                     <li><NavLink to={'/'}>Home</NavLink></li>
                 </ul>

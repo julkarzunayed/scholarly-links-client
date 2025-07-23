@@ -14,6 +14,8 @@ import MyProfile from '../pages/Dashboard/MyProfile/MyProfile';
 import ApplyToAddScholarship from '../pages/Dashboard/ApplyToAddScholarship/ApplyToAddScholarship';
 import EditApplyToAddScholarship from '../pages/Dashboard/EditApplyToAddScholarship/EditApplyToAddScholarship';
 import PendingPublishersApplications from '../pages/Dashboard/PendingPublishersApplications/PendingPublishersApplications';
+import ApprovedPublishersApplications from '../pages/Dashboard/ApprovedPublishersApplications/ApprovedPublishersApplications';
+import RejectedPublishersApplications from '../pages/Dashboard/RejectedPublishersApplications/RejectedPublishersApplications';
 
 const router = createBrowserRouter([
     {
@@ -57,7 +59,15 @@ const router = createBrowserRouter([
             {
                 path: 'pendingPublishersApplications',
                 element: <PendingPublishersApplications/>
-            }
+            },
+            {
+                path: 'approvedPublishersApplications',
+                element: <ApprovedPublishersApplications/>
+            },
+            {
+                path: 'rejectedPublishersApplications',
+                element: <RejectedPublishersApplications/>
+            },
         ]
     },
     {
