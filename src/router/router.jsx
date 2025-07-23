@@ -12,6 +12,7 @@ import PrivetRouter from '../routers/PrivetRouter';
 import DashboardLayout from '../layouts/DashboardLayout/DashboardLayout';
 import MyProfile from '../pages/Dashboard/MyProfile/MyProfile';
 import ApplyToAddScholarship from '../pages/Dashboard/ApplyToAddScholarship/ApplyToAddScholarship';
+import EditApplyToAddScholarship from '../pages/Dashboard/EditApplyToAddScholarship/EditApplyToAddScholarship';
 
 const router = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: 'applyToAddScholarship',
                 Component: ApplyToAddScholarship,
+            },
+            {
+                path: 'editApplyToAddScholarship',
+                Component: EditApplyToAddScholarship
             }
         ]
     },

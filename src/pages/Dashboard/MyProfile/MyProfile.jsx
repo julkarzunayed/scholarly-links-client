@@ -6,7 +6,7 @@ import { MdEditDocument, MdEmail } from 'react-icons/md';
 import { format } from 'date-fns';
 import { IoSchoolSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import useCheckApplicationOfPublisher from '../../../hooks/useCheckApplicationOfPublisher';
 import { GrSettingsOption } from "react-icons/gr";
 import { capitalizeFirstLetter } from '../../../utils/helper';
@@ -175,12 +175,12 @@ const MyProfile = () => {
                                     <span className='py-1  px-4 rounded-2xl bg-orange-400 '>
                                         {capitalizeFirstLetter(applyData?.status)}
                                     </span>
-                                    <button
-                                        onClick={``}
+                                    <Link
+                                        to={'/dashboard/editApplyToAddScholarship'}
                                         title='Edit Application'
                                         className='btn btn-sm  btn-primary text-gray-700 relative'>
                                         <MdEditDocument size={25} />
-                                    </button>
+                                    </Link>
                                     <button
                                         title='Cancel Application'
                                         onClick={handleCancelScholarshipApply}
