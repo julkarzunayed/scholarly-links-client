@@ -11,9 +11,10 @@ import useCheckApplicationOfPublisher from '../../../hooks/useCheckApplicationOf
 import { GrSettingsOption } from "react-icons/gr";
 import { capitalizeFirstLetter } from '../../../utils/helper';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 const MyProfile = () => {
-    const { user, loading: authLoading } = useAuth();
+    const { user, loading: authLoading, userLogout } = useAuth();
     const { userData, userLoading } = useUserDB();
     const navigate = useNavigate();
     const axiosInstance = useAxiosSecure();
@@ -74,6 +75,34 @@ const MyProfile = () => {
             }
         });
     }
+
+    const handleLogout = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to log Out!",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                userLogout()
+                    .then(() => {
+                        Swal.fire({
+                            title: "Logged Out!",
+                            text: "You have successfully logged out.",
+                            icon: "success"
+                        });
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+        });
+
+    }
+
     return (
         <div className='p-5 '>
             {/* Profile section Starts */}
@@ -127,8 +156,15 @@ const MyProfile = () => {
                         </p>
                     </div>
                 </div>
-                <div className="">
-                    <GrSettingsOption />
+                <div className="flex items-center *:max-w-[250px] *:flex-1 text-center">
+                    <button
+                        onClick={handleLogout}
+                        className="flex btn btn-warning justify-center items-center gap-1.5">
+                        <RiLogoutCircleRLine size={22} />  Log Out
+                    </button>
+                    <button className="flex btn btn- bg-gray-400 justify-center items-center gap-1.5">
+                        <GrSettingsOption size={22} /> Profile Settings
+                    </button>
                 </div>
 
             </div> {/* Profile section end here */}
