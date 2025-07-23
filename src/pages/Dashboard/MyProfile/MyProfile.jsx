@@ -2,25 +2,28 @@ import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import useUserDB from '../../../hooks/useUserDB';
 import LoadingPage from '../../Loading/LoadingPage';
-import { MdEmail } from 'react-icons/md';
+import { MdEditDocument, MdEmail } from 'react-icons/md';
 import { format } from 'date-fns';
 import { IoSchoolSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 import useCheckApplicationOfPublisher from '../../../hooks/useCheckApplicationOfPublisher';
+import { GrSettingsOption } from "react-icons/gr";
+import { capitalizeFirstLetter } from '../../../utils/helper';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const MyProfile = () => {
     const { user, loading: authLoading } = useAuth();
     const { userData, userLoading } = useUserDB();
     const navigate = useNavigate();
-    const { data: applyData, loading: applyStatusLoading } = useCheckApplicationOfPublisher();
-    console.log(applyData)
+    const axiosInstance = useAxiosSecure();
+    const { data: applyData, loading: applyStatusLoading, refetch } = useCheckApplicationOfPublisher();
+
 
     const joined = format(new Date(userData?.created_at || '1999-07-22T07:25:33.835Z'), 'dd MMMM yyyy');
     if (authLoading && userLoading) {
         return <LoadingPage />
     }
-
     const handleApplyFoScholarship = () => {
         Swal.fire({
             title: "Are you sure?",
@@ -41,6 +44,33 @@ const MyProfile = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 navigate('/dashboard/applyToAddScholarship')
+            }
+        });
+    }
+
+    const handleCancelScholarshipApply = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You wan to cancel application!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "No, Don't Cancel",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Cancel!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const result = await axiosInstance.delete(`/publishers/apply?email=${user?.email}`)
+                console.log(result);
+                if (result.data.deletedCount) {
+                    refetch()
+                    Swal.fire({
+                        title: "Canceled!",
+                        text: "Your application Canceled successfully.",
+                        icon: "success"
+                    });
+                }
+
             }
         });
     }
@@ -97,11 +127,14 @@ const MyProfile = () => {
                         </p>
                     </div>
                 </div>
+                <div className="">
+                    <GrSettingsOption />
+                </div>
 
             </div> {/* Profile section end here */}
 
 
-            <div className="mt-6 rounded-2xl p-2 shadow-[0_0px_15px_5px_rgba(0,0,0,0.05),0_0px_20px_2px_rgba(0,0,0,0.05)]">
+            <div className="mt-6 rounded-2xl p-3 shadow-[0_0px_15px_5px_rgba(0,0,0,0.05),0_0px_20px_2px_rgba(0,0,0,0.05)]">
 
                 {/* Apply to add scholarship Button */}
                 {
@@ -116,11 +149,45 @@ const MyProfile = () => {
                             <div className="text-end p-2 ">
                                 <button
                                     onClick={handleApplyFoScholarship}
-                                    className='btn  btn-primary text-gray-700 animate-bounc relative'>
+                                    className='btn  btn-primary text-gray-700 relative'>
                                     <span className=' absolute h-3 w-3 rounded-full bg-green-500 animate-ping -top-2 -left-2'></span>
                                     <span className=' absolute h-3 w-3 rounded-full bg-green-500  -top-2 -left-2'></span>
                                     Apply to add Scholarships
                                 </button>
+                            </div>
+                        </div>
+                    )
+                }
+                {
+                    !applyStatusLoading && (
+                        applyData?.status === 'pending' &&
+
+                        <div className="">
+                            <p className=" mt-3 mb-1 ">
+                                Your application for scholarship :
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-between border-y border-gray-400">
+                                <p className="text-lg font-montserrat italic ml-2">
+                                    Application status
+                                </p>
+                                {/* Apply button  */}
+                                <div className="text-end p-2 flex items-center gap-4">
+                                    <span className='py-1  px-4 rounded-2xl bg-orange-400 '>
+                                        {capitalizeFirstLetter(applyData?.status)}
+                                    </span>
+                                    <button
+                                        onClick={``}
+                                        title='Edit Application'
+                                        className='btn btn-sm  btn-primary text-gray-700 relative'>
+                                        <MdEditDocument size={25} />
+                                    </button>
+                                    <button
+                                        title='Cancel Application'
+                                        onClick={handleCancelScholarshipApply}
+                                        className='btn btn-sm btn-warning'>
+                                        Cancel
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import LoadingPage from '../../Loading/LoadingPage';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
@@ -10,6 +10,7 @@ const ApplyToAddScholarship = () => {
     const { user, loading: authLoading } = useAuth();
     const [loading, setLoading] = useState(false);
     const axiosInstance = useAxiosSecure();
+    const navigate = useNavigate();
 
 
     const {
@@ -55,7 +56,10 @@ const ApplyToAddScholarship = () => {
                             <br/>
                             Check your email and <b>ScholarlyLink</b> profile.
                         `,
-                        showCancelButton: true,
+                    }).then(async(result) => {
+                        if(result.isConfirmed){
+                            navigate('/dashboard/myProfile')
+                        }
                     })
                 }
             }

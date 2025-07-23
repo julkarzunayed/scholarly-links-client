@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import ScholarlyLinkLogo from '../../components/ScholarlyLinkLogo/ScholarlyLinkLogo';
-import useUserDB from '../../hooks/useUserDB';
+// import useUserDB from '../../hooks/useUserDB';
 
 const DashboardLayout = () => {
-    const user = useUserDB();
-    console.log(user)
+    // const user = useUserDB();
+
     return (
         <div className="drawer lg:drawer-open max-w-[1500px] mx-auto">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

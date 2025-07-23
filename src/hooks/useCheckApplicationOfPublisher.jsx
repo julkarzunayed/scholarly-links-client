@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 const useCheckApplicationOfPublisher = () => {
     const axiosInstance = useAxios();
     const { user, loading: authLoading } = useAuth();
-    const { data, isLoading, isError, isPending } = useQuery({
+    const { data, isLoading, isError, isPending, refetch } = useQuery({
         queryKey: ['application_data_of_publisher', user?.email],
         queryFn: async () => {
             const res = await axiosInstance.get(`/publishers/apply?email=${user?.email}`)
@@ -23,6 +23,7 @@ const useCheckApplicationOfPublisher = () => {
     // console.log(data)
     // console.log(error)
     return {
+        refetch,
         data: data,
         loading: authLoading || isLoading,
         error: isError,
