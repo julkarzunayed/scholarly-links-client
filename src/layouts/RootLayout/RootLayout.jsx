@@ -25,7 +25,9 @@ const RootLayout = () => {
                         {/* Sidebar content here */}
 
                         <li>
-                            <NavLink>
+                            <NavLink 
+                            to={'/dashboard/myProfile'}
+                            >
                                 <div
                                     title={user?.displayName}
                                     className="border-[1px] border-blue-300 rounded-full h-10 w-10 bg-cover bg-center bg-no-repeat"
@@ -42,7 +44,7 @@ const RootLayout = () => {
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/allScholarship'}>All Scholarships</NavLink></li>
                         <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
-                        <li><NavLink to={''}>About</NavLink></li>
+                        <li><NavLink to={'/about'}>About</NavLink></li>
                     </ul>
                 </div>
             </div>

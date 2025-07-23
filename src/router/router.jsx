@@ -11,6 +11,7 @@ import Error from '../pages/Error/Error';
 import PrivetRouter from '../routers/PrivetRouter';
 import DashboardLayout from '../layouts/DashboardLayout/DashboardLayout';
 import MyProfile from '../pages/Dashboard/MyProfile/MyProfile';
+import ApplyToAddScholarship from '../pages/Dashboard/ApplyToAddScholarship/ApplyToAddScholarship';
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
                 element: <PrivetRouter>
                     <MyProfile/>
                 </PrivetRouter>
+            },
+            {
+                path: 'applyToAddScholarship',
+                Component: ApplyToAddScholarship,
             }
         ]
     },
