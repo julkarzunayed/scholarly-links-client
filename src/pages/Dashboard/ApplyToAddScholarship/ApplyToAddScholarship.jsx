@@ -28,6 +28,7 @@ const ApplyToAddScholarship = () => {
         const applicationData = {
             ...data,
             applied_at: new Date().toISOString(),
+            status: 'pending',
             photo_url: user?.photoURL,
         }
         Swal.fire({
