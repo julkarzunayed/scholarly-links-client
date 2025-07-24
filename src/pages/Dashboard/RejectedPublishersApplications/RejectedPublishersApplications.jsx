@@ -7,7 +7,7 @@ import { TiPhoneOutline } from "react-icons/ti";
 import { HiOutlineMail } from "react-icons/hi";
 import { ISoTimeToDate } from '../../../utils/helper';
 import Swal from 'sweetalert2';
-import { GiEmptyMetalBucketHandle, GiEmptyWoodBucketHandle } from "react-icons/gi";
+import {  GiEmptyWoodBucketHandle } from "react-icons/gi";
 
 const RejectedPublishersApplications = () => {
     const axiosInstance = useAxiosSecure();
@@ -17,7 +17,7 @@ const RejectedPublishersApplications = () => {
     const { data: publishersData, isLoading, isPending } = useQuery({
         queryKey: ['rejected_publishers_application', user?.email],
         queryFn: async () => {
-            const res = await axiosInstance.get(`/publishers/apply?userEmail=${user?.email}&status=rejected`)
+            const res = await axiosInstance.get(`/publishers/application_check?userEmail=${user?.email}&status=rejected`)
 
             if (res.status === 204) {
                 return [];

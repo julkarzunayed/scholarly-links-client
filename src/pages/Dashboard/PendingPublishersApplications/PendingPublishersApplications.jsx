@@ -17,7 +17,7 @@ const PendingPublishersApplications = () => {
     const { data: publishersData, isLoading, isPending } = useQuery({
         queryKey: ['pending_publishers_application', user?.email],
         queryFn: async () => {
-            const res = await axiosInstance.get(`/publishers/apply?userEmail=${user?.email}&status=pending`)
+            const res = await axiosInstance.get(`/publishers/application_check?userEmail=${user?.email}&status=pending`)
 
             if (res.status === 204) {
                 return [];

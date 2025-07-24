@@ -1,15 +1,16 @@
 import React from 'react';
-import useAxios from './useAxios';
 import useAuth from './useAuth';
 import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from './useAxiosSecure';
 
 const useCheckApplicationOfPublisher = () => {
-    const axiosInstance = useAxios();
+    const axiosInstance = useAxiosSecure();
     const { user, loading: authLoading } = useAuth();
+
     const { data, isLoading, isError, isPending, refetch } = useQuery({
         queryKey: ['application_data_of_publisher', user?.email],
         queryFn: async () => {
-            const res = await axiosInstance.get(`/publishers/apply?email=${user?.email}`)
+            const res = await axiosInstance.get(`/publishers/apply?email=${user?.email}&userEmail=${user?.email}`)
 
             if (res.status === 204) {
                 return {status: 'not_applied'}; 
