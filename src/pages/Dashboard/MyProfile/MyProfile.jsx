@@ -3,15 +3,16 @@ import useAuth from '../../../hooks/useAuth';
 import useUserDB from '../../../hooks/useUserDB';
 import LoadingPage from '../../Loading/LoadingPage';
 import { MdEditDocument, MdEmail } from 'react-icons/md';
-import { format } from 'date-fns';
 import { IoSchoolSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router';
 import useCheckApplicationOfPublisher from '../../../hooks/useCheckApplicationOfPublisher';
 import { GrSettingsOption } from "react-icons/gr";
-import { capitalizeFirstLetter } from '../../../utils/helper';
+import { capitalizeFirstLetter, ISoTimeToDate } from '../../../utils/helper';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
+import { FaPhone, FaUniversity, FaUserTie } from 'react-icons/fa';
+import { FcApproval } from "react-icons/fc";
 
 const MyProfile = () => {
     const { user, loading: authLoading, userLogout } = useAuth();
@@ -21,7 +22,8 @@ const MyProfile = () => {
     const { data: applyData, loading: applyStatusLoading, refetch } = useCheckApplicationOfPublisher();
 
 
-    const joined = format(new Date(userData?.created_at || '1999-07-22T07:25:33.835Z'), 'dd MMMM yyyy');
+    const joined = ISoTimeToDate(userData?.created_at);
+
     if (authLoading && userLoading) {
         return <LoadingPage />
     }
@@ -102,7 +104,7 @@ const MyProfile = () => {
         });
 
     }
-
+    // console.log(applyData)
     return (
         <div className='p-5 '>
             {/* Profile section Starts */}
@@ -196,7 +198,7 @@ const MyProfile = () => {
                 }
                 {
                     !applyStatusLoading && (
-                        applyData?.status === 'pending' || applyData?.status === 'rejected' &&
+                        (applyData?.status === 'pending' || applyData?.status === 'rejected') &&
 
                         <div className="">
                             <p className=" mt-3 mb-1 ">
@@ -228,7 +230,41 @@ const MyProfile = () => {
                         </div>
                     )
                 }
-
+                {
+                    userData?.role === 'publisher' &&
+                    <div className="">
+                        <h2 className='text-center font-roboto font-bold text-2xl'>
+                            Your Publisher Profile
+                        </h2>
+                        <div className="flex flex-col sm:flex-row justify-between *:flex-1 p-2 mt-4 gap-4">
+                            <div
+                                className="flex flex-col 
+                            justify-center items-center 
+                            space-y-2 py-5 rounded-2xl 
+                            bg-base-300 shadow-sm">
+                                <p className="flex items-center 
+                                gap-2 font-bold text-lg">
+                                    <FaUniversity /> {applyData?.institute_name}
+                                </p>
+                                <p className="flex items-center gap-2">
+                                    <FaPhone /> {applyData?.phone_number}
+                                </p>
+                            </div>
+                            <div
+                                className="flex flex-col justify-center items-center space-y-2 py-5 
+                            rounded-2xl bg-base-300 shadow-sm">
+                                <p className="flex items-center 
+                                gap-2 font-bold text-lg">
+                                    <FaUserTie /> {capitalizeFirstLetter(userData?.role)}
+                                </p>
+                                <p className="flex items-center 
+                                gap-2">
+                                    <FcApproval size={18}/> {ISoTimeToDate(applyData?.applied_at)}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
 
             </div>
         </div>

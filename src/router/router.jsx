@@ -18,6 +18,8 @@ import ApprovedPublishersApplications from '../pages/Dashboard/ApprovedPublisher
 import RejectedPublishersApplications from '../pages/Dashboard/RejectedPublishersApplications/RejectedPublishersApplications';
 import AdminRouters from '../routers/AdminRouters';
 import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
+import PublisherRout from '../routers/PublisherRout';
+import AddScholarship from '../pages/Dashboard/AddScholarship/AddScholarship';
 
 const router = createBrowserRouter([
     {
@@ -59,6 +61,9 @@ const router = createBrowserRouter([
                 path: 'editApplyToAddScholarship',
                 Component: EditApplyToAddScholarship
             },
+
+            // Admin Routs
+
             {
                 path: 'pendingPublishersApplications',
                 element: <AdminRouters>
@@ -77,6 +82,13 @@ const router = createBrowserRouter([
                     <RejectedPublishersApplications />
                 </AdminRouters>
             },
+            // Publisher Rout
+            {
+                path: 'addScholarship',
+                element: <PublisherRout>
+                    <AddScholarship />
+                </PublisherRout>
+            }
         ]
     },
     {

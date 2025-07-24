@@ -88,7 +88,7 @@ const DashboardLayout = () => {
                                 <>
 
                                     <li>
-                                        <NavLink to={'/myAddedScholarships'} className="flex items-center p-2 text-gray-700 hover:bg-base-300 rounded-md">
+                                        <NavLink to={'/dashboard/myAddedScholarships'} className="flex items-center p-2 text-gray-700 hover:bg-base-300 rounded-md">
                                             <span className="relative">
                                                 <IoSchoolSharp className="inline-block mr-2 text-xl" />
                                                 <BsCheck size={22} className='absolute -bottom-2 -right-1 text-green-500' />
@@ -97,12 +97,12 @@ const DashboardLayout = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to={'/addScholarship'} className="flex items-center p-2 text-gray-700 hover:bg-base-300 rounded-md">
+                                        <NavLink to={'/dashboard/addScholarship'} className="flex items-center p-2 text-gray-700 hover:bg-base-300 rounded-md">
                                             <span className="relative">
                                                 <IoSchoolSharp className="inline-block mr-2 text-xl" />
                                                 <GrFormAdd size={22} className='absolute -bottom-2 -right-1 text-orange-500' />
                                             </span>
-                                            Add Scholarship
+                                            Add A Scholarship
                                         </NavLink>
                                     </li>
                                 </>
