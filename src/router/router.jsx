@@ -17,6 +17,7 @@ import PendingPublishersApplications from '../pages/Dashboard/PendingPublishersA
 import ApprovedPublishersApplications from '../pages/Dashboard/ApprovedPublishersApplications/ApprovedPublishersApplications';
 import RejectedPublishersApplications from '../pages/Dashboard/RejectedPublishersApplications/RejectedPublishersApplications';
 import AdminRouters from '../routers/AdminRouters';
+import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-
+                path: 'home',
+                Component: DashboardHome,
             },
             {
                 path: 'myProfile',
