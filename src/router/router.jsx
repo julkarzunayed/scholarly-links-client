@@ -16,6 +16,7 @@ import EditApplyToAddScholarship from '../pages/Dashboard/EditApplyToAddScholars
 import PendingPublishersApplications from '../pages/Dashboard/PendingPublishersApplications/PendingPublishersApplications';
 import ApprovedPublishersApplications from '../pages/Dashboard/ApprovedPublishersApplications/ApprovedPublishersApplications';
 import RejectedPublishersApplications from '../pages/Dashboard/RejectedPublishersApplications/RejectedPublishersApplications';
+import AdminRouters from '../routers/AdminRouters';
 
 const router = createBrowserRouter([
     {
@@ -40,12 +41,12 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                
+
             },
             {
                 path: 'myProfile',
                 element: <PrivetRouter>
-                    <MyProfile/>
+                    <MyProfile />
                 </PrivetRouter>
             },
             {
@@ -58,15 +59,21 @@ const router = createBrowserRouter([
             },
             {
                 path: 'pendingPublishersApplications',
-                element: <PendingPublishersApplications/>
+                element: <AdminRouters>
+                    <PendingPublishersApplications />
+                </AdminRouters>
             },
             {
                 path: 'approvedPublishersApplications',
-                element: <ApprovedPublishersApplications/>
+                element: <AdminRouters>
+                    <ApprovedPublishersApplications />
+                </AdminRouters>
             },
             {
                 path: 'rejectedPublishersApplications',
-                element: <RejectedPublishersApplications/>
+                element: <AdminRouters>
+                    <RejectedPublishersApplications />
+                </AdminRouters>
             },
         ]
     },

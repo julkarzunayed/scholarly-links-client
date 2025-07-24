@@ -97,7 +97,7 @@ const PendingPublishersApplications = () => {
     if (isLoading || isPending) {
         return <LoadingPage />
     }
-    console.log(publishersData.length)
+
 
     return (
         <div className="overflow-x-auto pt-10 p-1 ">
@@ -105,7 +105,7 @@ const PendingPublishersApplications = () => {
                 Publisher Applications
             </h1>
             {
-                publishersData.length !== 0 ?
+                publishersData?.length !== 0 ?
                     <div className="overflow-x-auto">
                         <table className="table min-w-4xl">
                             {/* head */}

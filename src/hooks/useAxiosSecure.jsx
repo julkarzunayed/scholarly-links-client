@@ -23,7 +23,7 @@ const useAxiosSecure = () => {
     }, error => {
         console.log('Error in the Interceptor', error);
         if (error.status === 403) {
-            navigate('/forbiddenPage')
+            navigate('/forbidden')
         }
         if (error.status === 401) {
             userLogout()
