@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useNavigate } from 'react-router';
 
 const countryName = [
     { "id": 1, "code": "AF", "name": "Afghanistan" },
@@ -263,6 +264,7 @@ const AddScholarship = () => {
     const [fileError, setFileError] = useState('');
     const [loading, setLoading] = useState(false);
     const axiosInstance = useAxiosSecure();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -316,7 +318,8 @@ const AddScholarship = () => {
                 const profilePic = await uploadImageToImageBB();
 
                 if (profilePic === null) {
-                    setLoading(false)
+                    setLoading(false);
+                    navigate('/dashboard/myAddedScholarships')
                     Swal.fire({
                         title: "Profile Image Failed!",
                         text: 'There might some error occurred uploading Image',

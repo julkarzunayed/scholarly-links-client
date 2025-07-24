@@ -20,6 +20,7 @@ import AdminRouters from '../routers/AdminRouters';
 import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
 import PublisherRout from '../routers/PublisherRout';
 import AddScholarship from '../pages/Dashboard/AddScholarship/AddScholarship';
+import MyAddedScholarships from '../pages/Dashboard/MyAddedScholarships/MyAddedScholarships';
 
 const router = createBrowserRouter([
     {
@@ -87,6 +88,12 @@ const router = createBrowserRouter([
                 path: 'addScholarship',
                 element: <PublisherRout>
                     <AddScholarship />
+                </PublisherRout>
+            },
+            {
+                path: 'myAddedScholarships',
+                element: <PublisherRout>
+                    <MyAddedScholarships />
                 </PublisherRout>
             }
         ]
