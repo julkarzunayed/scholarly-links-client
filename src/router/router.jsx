@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router';
 import RootLayout from '../layouts/RootLayout/RootLayout';
 import HomePage from '../pages/HomePage/HomePage/HomePage';
-import AllScholarship from '../pages/AllScholarship/AllScholarship';
 import AuthLayout from '../layouts/AuthLayout/AuthLayout';
 import Login from '../pages/Authentication/LogIn/Login';
 import Register from '../pages/Authentication/Register/Register';
@@ -21,6 +20,8 @@ import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
 import PublisherRout from '../routers/PublisherRout';
 import AddScholarship from '../pages/Dashboard/AddScholarship/AddScholarship';
 import MyAddedScholarships from '../pages/Dashboard/MyAddedScholarships/MyAddedScholarships';
+import LoaderMini from '../pages/Loading/LoaderMini';
+import AllScholarships from '../pages/AllScholarships/AllScholarships';
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/allScholarship',
-                Component: AllScholarship,
+                Component: AllScholarships,
             }
         ]
     },
@@ -117,7 +118,7 @@ const router = createBrowserRouter([
     },
     {
         path: '*',
-        Component: Error
+        Component: LoaderMini
     }
 ])
 

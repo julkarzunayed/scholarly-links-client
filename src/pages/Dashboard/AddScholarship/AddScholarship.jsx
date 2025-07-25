@@ -499,6 +499,32 @@ const AddScholarship = () => {
                                 }
                             </fieldset>
 
+                            {/* Campus Image Link */}
+                            <fieldset className='fieldset'>
+                                <label className='label'>Campus Image Link:</label>
+                                <input
+                                    className='input w-full'
+                                    placeholder='https://example.com'
+                                    type="url"
+                                    // onWheel={(e) => e.target.blur()}
+                                    {
+                                    ...register('campus_image', {
+                                        required: 'Campus Image Link is required',
+                                        pattern: {
+                                            value: /^(https?:\/\/)?([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z].*$/,
+                                            message: 'Please enter a valid URL (e.g, https://example.com)'
+                                        }
+                                    })
+                                    }
+                                />
+                                {
+                                    errors?.campus_image &&
+                                    <p className="text-red-500">
+                                        {errors?.campus_image?.message}
+                                    </p>
+                                }
+                            </fieldset>
+
                         </fieldset>
 
                         <fieldset className="fieldset bg-base-200 grid sm:grid-cols-2 sm:gap-x-5 rounded-box  p-4">

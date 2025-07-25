@@ -11,3 +11,8 @@ export const ISoTimeToDate = (date) => {
   return  format(new Date(date || '1999-07-22T07:25:33.835Z'), 'dd MMMM yyyy H:mm');
 };
 
+export const ISoTimeToDateOnly = (date) => {
+  if (!date) return ''; 
+  return  format(new Date(date || '1999-07-22T07:25:33.835Z'), 'dd MMMM yyyy');
+};
+
