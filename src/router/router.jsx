@@ -20,8 +20,9 @@ import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
 import PublisherRout from '../routers/PublisherRout';
 import AddScholarship from '../pages/Dashboard/AddScholarship/AddScholarship';
 import MyAddedScholarships from '../pages/Dashboard/MyAddedScholarships/MyAddedScholarships';
-import LoaderMini from '../pages/Loading/LoaderMini';
 import AllScholarships from '../pages/AllScholarships/AllScholarships';
+import ScholarshipDetails from '../pages/ScholarshipDetails/ScholarshipDetails';
+import Check from '../components/Check/Check';
 
 const router = createBrowserRouter([
     {
@@ -33,8 +34,14 @@ const router = createBrowserRouter([
                 Component: HomePage
             },
             {
-                path: '/allScholarship',
+                path: 'allScholarship',
                 Component: AllScholarships,
+            },
+            {
+                path: 'scholarshipDetails/:id',
+                element: <PrivetRouter>
+                    <ScholarshipDetails />
+                </PrivetRouter>
             }
         ]
     },
@@ -118,7 +125,11 @@ const router = createBrowserRouter([
     },
     {
         path: '*',
-        Component: LoaderMini
+        Component: Error
+    },
+    {
+        path: 'check',
+        Component: Check
     }
 ])
 

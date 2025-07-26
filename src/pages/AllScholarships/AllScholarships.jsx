@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import useAxios from '../../hooks/useAxios';
-import LoaderMini from '../Loading/LoaderMini';
 import LoadingPage from '../Loading/LoadingPage';
 import ScholarshipCard from './ScholarshipCard';
+import NoResultFound from '../../components/NoResultFound/NoResultFound';
 
 
 const AllScholarships = () => {
@@ -11,7 +11,7 @@ const AllScholarships = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [degree, setDegree] = useState('');
 
-    const { data: scholarships, isLoading, isPending, isError,  } = useQuery({
+    const { data: scholarships, isLoading, isPending } = useQuery({
         queryKey: ['all_scholarships', searchTerm, degree],
         queryFn: async () => {
             const res = await axiosPublic.get(`/scholarship/all?searchTerm=${searchTerm}&degree=${degree}`)
@@ -20,9 +20,7 @@ const AllScholarships = () => {
         }
     });
 
-    if (isError) {
-        return <Error />
-    }
+
     console.log(scholarships);
     return (
         <div>
@@ -84,9 +82,8 @@ const AllScholarships = () => {
                                         }
                                     </div>
                                     :
-                                    <div className="">
-
-                                    </div>
+                                    // Empty animation
+                                    <NoResultFound/>
                             }
                         </>
                 }

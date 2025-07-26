@@ -257,6 +257,17 @@ const countryName = [
     { "id": 248, "code": "ZW", "name": "Zimbabwe" }
 ]
 
+const {
+    fieldsetStyle,
+} = {
+    fieldsetStyle: "fieldset grid sm:grid-cols-2 sm:gap-x-5 bg-base-200 rounded-box  p-4"
+}
+
+const checkboxStyle = {
+    type: "checkbox",
+    className: "checkbox text-secondary",
+}
+
 
 const AddScholarship = () => {
     const { user } = useAuth()
@@ -354,9 +365,6 @@ const AddScholarship = () => {
 
     }
 
-
-
-
     return (
         <div className='p-2 pt-10 shadow-[0_0px_15px_5px_rgba(0,0,0,0.05),0_0px_20px_2px_rgba(0,0,0,0.05)]'>
             <h1 className="text-4xl font-bold text-center ">
@@ -368,29 +376,13 @@ const AddScholarship = () => {
                     className=''>
 
                     <div className="">
-                        <fieldset className="fieldset grid sm:grid-cols-2 sm:gap-x-5 bg-base-200 rounded-box  p-4">
+
+                        {/* institute Details start */}
+
+                        <fieldset className={fieldsetStyle}>
                             <legend className="fieldset-legend">Institute Details</legend>
 
-                            {/* Scholarship Name */}
-                            <fieldset className='fieldset'>
-                                <label className='label'>Scholarship Name:</label>
-                                <input
-                                    className='input w-full'
-                                    placeholder='Scholarship Name'
-                                    type="text"
-                                    {
-                                    ...register('scholarship_name', {
-                                        required: 'Scholarship Name is required',
-                                    })
-                                    }
-                                />
-                                {
-                                    errors?.scholarship_name &&
-                                    <p className="text-red-500">
-                                        {errors?.scholarship_name?.message}
-                                    </p>
-                                }
-                            </fieldset>
+
 
                             {/* Institute Name */}
                             <fieldset className='fieldset'>
@@ -525,10 +517,102 @@ const AddScholarship = () => {
                                 }
                             </fieldset>
 
-                        </fieldset>
+                            {/* Total Number of students */}
+                            <fieldset className='fieldset'>
+                                <label className='label'>Total Number of students:</label>
+                                <input
+                                    className='input w-full'
+                                    placeholder='Total Number of students'
+                                    type="number"
+                                    onWheel={(e) => e.target.blur()}
+                                    {
+                                    ...register('total_students', {
+                                        required: 'Total Number of students is required',
+                                    })
+                                    }
+                                />
+                                {
+                                    errors?.total_students &&
+                                    <p className="text-red-500">
+                                        {errors?.total_students?.message}
+                                    </p>
+                                }
+                            </fieldset>
 
-                        <fieldset className="fieldset bg-base-200 grid sm:grid-cols-2 sm:gap-x-5 rounded-box  p-4">
+                            {/* Institute Type */}
+                            <fieldset className='fieldset'>
+                                <label className='label'>Institution Type:</label>
+                                <select
+                                    {
+                                    ...register('institute_type', {
+                                        required: 'Institute Type is required'
+                                    })
+                                    }
+
+                                    defaultValue=""
+                                    className="select w-full">
+                                    <option value='' disabled={true}>Type of institute</option>
+                                    <option value='Public'>Public</option>
+                                    <option value='Privet'>Privet</option>
+                                </select>
+                                {
+                                    errors?.institute_type &&
+                                    <p className="text-red-500">
+                                        {errors?.institute_type?.message}
+                                    </p>
+                                }
+                            </fieldset>
+
+                            {/* Description */}
+                            <fieldset className='fieldset sm:col-span-2'>
+                                <label className='label'>Description:</label>
+                                <textarea
+                                    className="textarea w-full"
+                                    {
+                                    ...register('description', {
+                                        required: 'Description is required',
+                                    })
+                                    }
+                                    placeholder="Add a description about your Institute and Scholarship">
+                                </textarea>
+                                {
+                                    errors?.description &&
+                                    <p className="text-red-500">
+                                        {errors?.description?.message}
+                                    </p>
+                                }
+                            </fieldset>
+
+                        </fieldset> {/* institute Details ends */}
+
+
+                        {/* Scholarship Details start */}
+
+                        <fieldset className={fieldsetStyle}>
                             <legend className="fieldset-legend">Scholarship Details</legend>
+
+                            {/* Scholarship Name */}
+                            <fieldset className='fieldset'>
+                                <label className='label'>Scholarship Name:</label>
+                                <input
+                                    className='input w-full'
+                                    placeholder='Scholarship Name'
+                                    type="text"
+                                    {
+                                    ...register('scholarship_name', {
+                                        required: 'Scholarship Name is required',
+                                    })
+                                    }
+                                />
+                                {
+                                    errors?.scholarship_name &&
+                                    <p className="text-red-500">
+                                        {errors?.scholarship_name?.message}
+                                    </p>
+                                }
+                            </fieldset>
+
+
                             {/* Subject Category */}
                             <fieldset className='fieldset'>
                                 <label className='label'>Subject Category:</label>
@@ -613,9 +697,129 @@ const AddScholarship = () => {
                                 }
                             </fieldset>
 
+                        </fieldset> {/* institute Details ends */}
+
+
+
+                        {/* Campus Info */}
+                        <fieldset className="fieldset bg-base-200 grid sm:grid-cols-2 md:grid-cols-3 sm:gap-x-5 rounded-box  p-4">
+                            <legend className="fieldset-legend">Campus Info</legend>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('on_campus_living_facility')}
+                                />
+                                On-Campus Living facility
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('on_campus_woman_center')}
+                                />
+                                On-Campus Woman's Center
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('security_patrol_24_hr')}
+                                />
+                                24-HR Security Patrol
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('campus_emergency_phones')}
+                                />
+                                Campus Emergency Phones
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('institute_athletics_association')}
+                                />
+                                Institute Athletics Association
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('divisional_sports_team')}
+                                />
+                                Divisional Sports Team
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('on_campus_gymnasium')}
+                                />
+                                On-Campus Gymnasium
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('student_loan')}
+                                />
+                                Students Borrowing Loans
+                            </label>
+
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('aid_and_grants')}
+                                />
+                                Aid & Grants
+                            </label>
                         </fieldset>
 
-                        <fieldset className="fieldset grid sm:grid-cols-2 sm:gap-x-5 bg-base-200  rounded-box p-4">
+
+                        {/* After Graduation */}
+                        <fieldset className={fieldsetStyle}>
+                            <legend className="fieldset-legend">After Graduation </legend>
+                            <label className="label">
+                                <input
+                                    {...checkboxStyle}
+                                    {...register('post_grad_job_placement')}
+                                />
+                                Post Grad Job Placement Teem
+                            </label>
+
+                            {/* Salary Range */}
+                            <fieldset className='fieldset'>
+                                <label className='label'>After Grade Average Salary:</label>
+                                <input
+                                    className='input w-full'
+                                    placeholder='Salary Range'
+                                    type="number"
+                                    onWheel={(e) => e.target.blur()}
+                                    {
+                                    ...register('salary_range', {
+                                        required: 'Salary Range is required',
+                                    })
+                                    }
+                                />
+                                {
+                                    errors?.salary_range &&
+                                    <p className="text-red-500">
+                                        {errors?.salary_range?.message}
+                                    </p>
+                                }
+                            </fieldset>
+
+                        </fieldset> {/* After Graduation End */}
+
+
+
+
+
+                        {/* Payment Details start */}
+                        <fieldset className={fieldsetStyle}>
                             <legend className="fieldset-legend">Payment and Deadline</legend>
                             {/* Tuition fees */}
                             <fieldset className='fieldset'>
@@ -706,8 +910,7 @@ const AddScholarship = () => {
                                 }
                             </fieldset>
 
-                        </fieldset>
-
+                        </fieldset>  {/* Payment Details ends */}
 
 
 

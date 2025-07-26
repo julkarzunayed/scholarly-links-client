@@ -1,8 +1,9 @@
 import React from 'react';
 import { capitalizeFirstLetter, ISoTimeToDateOnly } from '../../utils/helper';
+import { Link } from 'react-router';
 
 const ScholarshipCard = ({ scholarship }) => {
-    console.log(scholarship)
+    
     return (
         <div className='rounded-2xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-[0_0px_15px_5px_rgba(100,200,200,0.3),0_0px_20px_8px_rgba(50,200,200,0.2)]'>
             <div
@@ -65,10 +66,12 @@ const ScholarshipCard = ({ scholarship }) => {
                         </tbody>
                     </table>
                 </div>
-                <div className="mt-2">
-                    <button className='w-full border border-gray-400 rounded-lg text-lx font-bold font-roboto p-2 hover:bg-gray-600 hover:text-gray-50'>
+                <div className="mt-2 flex">
+                    <Link
+                        to={`/scholarshipDetails/${scholarship?._id}`}
+                        className='w-full text-center border border-gray-400 rounded-lg text-lx font-bold font-roboto p-2 hover:bg-gray-600 hover:text-gray-50'>
                         Will you get accepted?
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

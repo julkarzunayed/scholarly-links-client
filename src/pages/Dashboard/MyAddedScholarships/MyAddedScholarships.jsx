@@ -91,9 +91,11 @@ const MyAddedScholarships = () => {
                                                 {scholarship?.service_charge} */}
                                             </td>
                                             <td className='pt-2 p-0.5  flex justify-center items-center gap-0.5 flex-row *:border *:border-base-300 *:shadow-xs *:flex *:justify-center *:p-1.5 *:px-4 text-2xl *:rounded-sm *:hover:bg-base-300'>
-                                                <button>
+                                                <Link 
+                                                to={`/scholarshipDetails/${scholarship?._id}`}
+                                                >
                                                     <FaEye color='green'/>
-                                                </button>
+                                                </Link>
                                                 <button>
                                                     <FaRegEdit color=''/>
                                                 </button>
