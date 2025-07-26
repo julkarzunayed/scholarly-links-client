@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const ScholarshipCard = ({ scholarship }) => {
     
     return (
-        <div className='rounded-2xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-[0_0px_15px_5px_rgba(100,200,200,0.3),0_0px_20px_8px_rgba(50,200,200,0.2)]'>
+        <div className='rounded-2xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-accent flex flex-col'>
             <div
                 className="h-[170px] bg-cover bg-bottom bg-no-repeat rounded-t-2xl"
                 style={{
@@ -13,7 +13,7 @@ const ScholarshipCard = ({ scholarship }) => {
                 }}>
 
             </div>
-            <div className="p-4">
+            <div className="p-4 flex flex-col justify-between flex-1">
                 <div className="relative h-7">
                     <div
                         className=" w-16 h-16 rounded-lg bg-cover bg-center bg-no-repeat shadow-sm shadow-cyan-100 absolute left-1 -top-14"
@@ -69,7 +69,7 @@ const ScholarshipCard = ({ scholarship }) => {
                 <div className="mt-2 flex">
                     <Link
                         to={`/scholarshipDetails/${scholarship?._id}`}
-                        className='w-full text-center border border-gray-400 rounded-lg text-lx font-bold font-roboto p-2 hover:bg-gray-600 hover:text-gray-50'>
+                        className='w-full text-center border border-gray-400 rounded-lg text-lx font-bold font-roboto p-2 hover:bg-neutral hover:text-neutral-content'>
                         Will you get accepted?
                     </Link>
                 </div>

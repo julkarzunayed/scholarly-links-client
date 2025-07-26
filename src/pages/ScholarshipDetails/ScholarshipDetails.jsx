@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, useLocation, useParams } from 'react-router';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAuth from '../../hooks/useAuth';
 import LoadingPage from '../Loading/LoadingPage';
@@ -14,7 +14,7 @@ import StarBorder from '../../components/StarBorder/StarBorder';
 
 const textDescription = 'Sit amet consectetur adipisicing elit. Illo aperiam necessitatibus velit commodi, quidem doloribus in dolor perferendis excepturi quas vero recusandae totam accusantium illum assumenda, asperiores esse ducimus minus aspernatur. Eos enim quasi aspernatur reiciendis incidunt quo nesciunt perferendis voluptatum consequuntur libero hic esse voluptatibus est doloremque fuga molestias officiis natus illum, labore deserunt error veniam. Cum ipsa excepturi eum fugiat veritatis quia, quasi nulla est dicta vero accusamus itaque architecto sit facilis provident deserunt. Tempore error expedita totam nulla rem tempora deserunt iure voluptatibus, quos consectetur! Cupiditate eos soluta illo accusamus suscipit eligendi fugiat quasi ipsum esse reprehenderit possimus magnam voluptatibus eaque, optio inventore neque placeat beatae ducimus corrupti ut tempore deleniti enim. Rerum, aperiam nemo. Vero vitae aperiam doloribus quas placeat perferendis distinctio, deserunt culpa! Pariatur ullam aut nesciunt. At natus est saepe vero iusto, quod sit vitae iste, accusamus, deserunt quam rem debitis dolores. Sequi corporis adipisci veniam ipsum architecto, assumenda nemo sint at, libero, distinctio voluptatum praesentium vitae dolore sunt. At harum numquam fugit voluptate, culpa sed delectus laudantium, labore doloremque provident consequuntur iusto sequi velit vel a eveniet molestiae reprehenderit cupiditate debitis? '
 
-const sectionBoxStyle = "p-7 mt-4 rounded-2xl bg-base-100 shadow-[0_0px_20px_2px_rgba(0,0,0,0.15),0_0px_7px_2px_rgba(250,250,250,0.15)]"
+const sectionBoxStyle = "p-7 mt-6 rounded-2xl bg-base-100 shadow-[0_0px_20px_2px_rgba(0,0,0,0.15),0_0px_7px_2px_rgba(250,250,250,0.15)]"
 
 //[0_0px_20px_10px_rgba(150,150,150,0.05),0_0px_20px_10px_rgba(200,200,200,0.02)]
 // All learge Class 
@@ -33,6 +33,7 @@ const ScholarshipDetails = () => {
     const { user } = useAuth();
     const { id } = useParams();
     const axiosInstance = useAxiosSecure();
+    const location = useLocation();
     const [readMore, setReadMore] = useState(false);
     // console.log(id)
     const { data: scholarship, isLoading, isPending } = useQuery({
@@ -46,7 +47,32 @@ const ScholarshipDetails = () => {
     if (isLoading || isPending) {
         return <LoadingPage />
     }
-    // console.log(readMore)
+    const applicationData = {
+        fron: location.pathname,
+        data: {
+            scholarshipId: scholarship?._id,
+            scholarshipName: scholarship?.scholarship_name,
+            institute_name: scholarship?.institute_name
+        }
+    }
+
+    const applicationButton = <div className="text-end">
+        <Link
+            className=''
+            state={applicationData}
+            to={`/scholarshipApplicationPage/${scholarship?._id}`}
+        >
+            <StarBorder
+                as="button"
+                className=""
+                color="cyan"
+                speed="4s"
+            >
+                Apply Now
+            </StarBorder>
+        </Link>
+    </div>
+    // console.log(location)
     return (
         <div className='bg-base-200 pb-4'>
             {/* Cover Photo */}
@@ -102,21 +128,10 @@ const ScholarshipDetails = () => {
                             }
                         </span>
                     </p>
-                    <div className="text-end">
-                        <Link
-                            className=''
-                            to={``}
-                        >
-                            <StarBorder
-                                as="button"
-                                className=""
-                                color="cyan"
-                                speed="4s"
-                            >
-                                Apply Now
-                            </StarBorder>
-                        </Link>
-                    </div>
+                    {/* Application Button */}
+                    {
+                        applicationButton
+                    }
                 </div>
 
                 {/* Admission */}
@@ -288,7 +303,7 @@ const ScholarshipDetails = () => {
                     </div>
                 </div>
 
-
+                {/* Student Loans */}
                 <div className={sectionBoxStyle}>
                     <h2 className={boxTitle}>
                         Student Loans
@@ -308,6 +323,10 @@ const ScholarshipDetails = () => {
                             }
                         </div>
                     </div>
+                    {/* Application Button */}
+                    {
+                        applicationButton
+                    }
                 </div>
 
 
@@ -426,15 +445,19 @@ const ScholarshipDetails = () => {
                             }
                         </div>
                         <div className="flex flex-col gap-4 items-center justify-center md:col-span-2">
-                            <p className="">POST GRAD JOB PLACEMENT TEAM</p>
+                            <p className="">POST GRAD AVARAGE SALARY</p>
                             <span className='font-extrabold text-7xl font-roboto-slab'>
                                 ${
-                                    scholarship?.post_grad_job_placement || '73000'
+                                    scholarship?.salary_range || '73000'
                                 }
                             </span>
 
                         </div>
                     </div>
+                    {/* Application Button */}
+                    {
+                        applicationButton
+                    }
                 </div>
 
                 <h1 className={sectionTitle + `mt-14 `}>

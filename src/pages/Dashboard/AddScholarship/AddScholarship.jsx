@@ -309,6 +309,7 @@ const AddScholarship = () => {
 
 
     const onFormSubmit = async (data) => {
+        console.log(data)
         Swal.fire({
             title: "Submit Scholarship?",
             text: "Is your scholarship information correct!",
@@ -330,14 +331,14 @@ const AddScholarship = () => {
 
                 if (profilePic === null) {
                     setLoading(false);
-                    navigate('/dashboard/myAddedScholarships')
+
                     Swal.fire({
                         title: "Profile Image Failed!",
                         text: 'There might some error occurred uploading Image',
                         icon: "error",
 
                     });
-                    return
+                    return;
                 }
 
                 // scholarship data
@@ -347,7 +348,7 @@ const AddScholarship = () => {
                     ...data,
                     posted_at: new Date().toISOString(),
                 }
-
+                console.log(scholarshipData)
                 //scholarship dato upload in DB
                 const result = await axiosInstance.post(`/scholarship`, scholarshipData);
                 console.log(result.data)
@@ -357,6 +358,7 @@ const AddScholarship = () => {
                         text: 'Your scholarship published successfully.',
                         icon: "success",
                     });
+                    navigate('/dashboard/myAddedScholarships')
                     setLoading(false)
                 }
                 setLoading(false)

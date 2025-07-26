@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router';
 import NavBar from '../../pages/HomePage/shared/NavBar/NavBar';
 import useAuth from '../../hooks/useAuth';
 import Footer from '../../pages/HomePage/shared/Footer/Footer';
+import ThemeController from '../../components/ThemeController/ThemeController';
 
 const RootLayout = () => {
     const { user } = useAuth();
@@ -22,11 +23,15 @@ const RootLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                        {/* Theme Control */}
+                        <span className='flex justify-end items-center text-xl font-bold gap-3'>
+                            Theme:  <ThemeController  />
+                        </span>
                         {/* Sidebar content here */}
 
                         <li>
-                            <NavLink 
-                            to={'/dashboard/myProfile'}
+                            <NavLink
+                                to={'/dashboard/myProfile'}
                             >
                                 <div
                                     title={user?.displayName}

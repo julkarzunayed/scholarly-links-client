@@ -23,6 +23,7 @@ import MyAddedScholarships from '../pages/Dashboard/MyAddedScholarships/MyAddedS
 import AllScholarships from '../pages/AllScholarships/AllScholarships';
 import ScholarshipDetails from '../pages/ScholarshipDetails/ScholarshipDetails';
 import Check from '../components/Check/Check';
+import ScholarshipApplicationPage from '../pages/ScholarshipApplicationPage/ScholarshipApplicationPage';
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,12 @@ const router = createBrowserRouter([
                 path: 'scholarshipDetails/:id',
                 element: <PrivetRouter>
                     <ScholarshipDetails />
+                </PrivetRouter>
+            },
+            {
+                path: 'scholarshipApplicationPage/:id',
+                element: <PrivetRouter>
+                    <ScholarshipApplicationPage />
                 </PrivetRouter>
             }
         ]

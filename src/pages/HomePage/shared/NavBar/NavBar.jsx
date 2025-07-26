@@ -6,6 +6,7 @@ import useAuth from '../../../../hooks/useAuth';
 import { CgProfile } from "react-icons/cg";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import Swal from 'sweetalert2';
+import ThemeController from '../../../../components/ThemeController/ThemeController';
 
 const links = <>
     <li><NavLink to={'/'}>Home</NavLink></li>
@@ -51,7 +52,11 @@ const NavBar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
+                {/* Theme Controller */}
+                <span title='Theme' className='hidden sm:block'>
+                    <ThemeController />
+                </span>
                 {
                     user ?
                         <button className="" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" }}>

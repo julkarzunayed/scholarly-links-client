@@ -56,6 +56,7 @@ const AllScholarships = () => {
                         defaultValue=""
                         className="border border-gray-300 join-item max-w-[100px] px-0.5 select me-0 ">
                         <option value='' disabled={true}>Degree</option>
+                        <option value=''>All</option>
                         <option value='diploma'>Diploma</option>
                         <option value='bachelor'>Bachelor</option>
                         <option value='masters'>Masters</option>
@@ -72,7 +73,7 @@ const AllScholarships = () => {
                         <>
                             {
                                 scholarships?.length !== 0 ?
-                                    <div className="grid grid-cols-1 md:grid-cols-2">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                         {
                                             scholarships?.map(scholarship => (
                                                 <ScholarshipCard
