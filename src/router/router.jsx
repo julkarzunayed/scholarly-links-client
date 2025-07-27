@@ -24,6 +24,7 @@ import AllScholarships from '../pages/AllScholarships/AllScholarships';
 import ScholarshipDetails from '../pages/ScholarshipDetails/ScholarshipDetails';
 import Check from '../components/Check/Check';
 import ScholarshipApplicationPage from '../pages/ScholarshipApplicationPage/ScholarshipApplicationPage';
+import MyAppliedScholarships from '../pages/Dashboard/MyAppliedScholarships/MyAppliedScholarships';
 
 const router = createBrowserRouter([
     {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
             {
                 path: 'editApplyToAddScholarship',
                 Component: EditApplyToAddScholarship
+            },
+            {
+                path: 'myAppliedScholarships',
+                Component: MyAppliedScholarships
             },
 
             // Admin Routs

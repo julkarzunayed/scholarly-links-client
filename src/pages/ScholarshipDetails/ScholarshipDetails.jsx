@@ -49,11 +49,7 @@ const ScholarshipDetails = () => {
     }
     const applicationData = {
         fron: location.pathname,
-        data: {
-            scholarshipId: scholarship?._id,
-            scholarshipName: scholarship?.scholarship_name,
-            institute_name: scholarship?.institute_name
-        }
+        data: scholarship
     }
 
     const applicationButton = <div className="text-end">

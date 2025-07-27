@@ -73,12 +73,12 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             {
-                                role === 'user' &&
+                                role  &&
                                 <>
                                     <li>
-                                        <NavLink to={'/myApplications'} className={liClasses}>
+                                        <NavLink to={'/dashboard/myAppliedScholarships'} className={liClasses}>
                                             <FaFileAlt className="inline-block mr-2 text-lg" />
-                                            My Applications
+                                            My Applied Applications
                                         </NavLink>
                                     </li>
                                     <li>

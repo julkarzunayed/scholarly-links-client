@@ -48,7 +48,7 @@ const NavBar = () => {
         <div className='px-2 py-2 border border-base-300 shadow-sm sm:py-3 flex justify-between items-center'>
             <ScholarlyLinkLogo></ScholarlyLinkLogo>
             <div className="hidden lg:flex gap-1 ">
-                <ul className='flex gap-3'>
+                <ul className=' flex flex-row  menu gap-3'>
                     {links}
                 </ul>
             </div>

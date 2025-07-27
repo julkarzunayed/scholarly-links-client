@@ -25,12 +25,13 @@ const RootLayout = () => {
                     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                         {/* Theme Control */}
                         <span className='flex justify-end items-center text-xl font-bold gap-3'>
-                            Theme:  <ThemeController  />
+                            Theme:  <ThemeController />
                         </span>
                         {/* Sidebar content here */}
 
                         <li>
                             <NavLink
+                                
                                 to={'/dashboard/myProfile'}
                             >
                                 <div
