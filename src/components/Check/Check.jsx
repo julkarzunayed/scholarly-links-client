@@ -113,7 +113,6 @@ const Check = () => {
                     <label className="label">
                         <input
                             type="checkbox"
-                            
                             {...register('Remember_me')}
                             defaultChecked
                             className="checkbox" />

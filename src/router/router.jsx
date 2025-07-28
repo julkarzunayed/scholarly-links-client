@@ -25,6 +25,7 @@ import ScholarshipDetails from '../pages/ScholarshipDetails/ScholarshipDetails';
 import Check from '../components/Check/Check';
 import ScholarshipApplicationPage from '../pages/ScholarshipApplicationPage/ScholarshipApplicationPage';
 import MyAppliedScholarships from '../pages/Dashboard/MyAppliedScholarships/MyAppliedScholarships';
+import Payment from '../pages/Dashboard/Payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
             {
                 path: 'myAppliedScholarships',
                 Component: MyAppliedScholarships
+            },
+            {
+                path: 'payment/:scholarshipId',
+                Component: Payment,
             },
 
             // Admin Routs

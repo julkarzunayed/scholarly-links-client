@@ -29,7 +29,7 @@ const MyAppliedScholarships = () => {
         return <LoadingPage />
     }
 
-    console.log(applications)
+    // console.log(applications)
     return (
         <div className='p-2 pt-10'>
             {
@@ -115,10 +115,13 @@ const MyAppliedScholarships = () => {
                                                 <div className="m-1">
                                                     {
                                                         application?.payment_status === 'not_paid' &&
-                                                        <button className="flex items-center justify-center btn gap-2 p-1 badge badge-warning rounded-sm font-semibold  w-full ">
+                                                        <Link
+                                                            state={{ application: application }}
+                                                            to={`/dashboard/payment/${application?.scholarship_id}`}
+                                                            className="flex items-center justify-center btn gap-2 p-1 badge badge-warning rounded-sm font-semibold  w-full ">
                                                             <FaMoneyCheckDollar size={20} />
                                                             Pay Now
-                                                        </button>
+                                                        </Link>
                                                     }
 
                                                 </div>
