@@ -15,7 +15,7 @@ const ReviewMarquee = ({ reviews }) => {
                 pauseOnHover={true}
                 className="overflow-hidden rounded-xl">
                 {
-                    reviews.map((review) => (
+                    reviews?.map((review) => (
                         <ReviewCard key={review?._id} review={review} />
                     ))
                 }

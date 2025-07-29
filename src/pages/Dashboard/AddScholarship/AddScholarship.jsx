@@ -122,7 +122,7 @@ const AddScholarship = () => {
     }
 
     return (
-        <div className='p-2 pt-10 shadow-[0_0px_15px_5px_rgba(0,0,0,0.05),0_0px_20px_2px_rgba(0,0,0,0.05)]'>
+        <div className='p-2 py-10 shadow-[0_0px_15px_5px_rgba(0,0,0,0.05),0_0px_20px_2px_rgba(0,0,0,0.05)]'>
             <h1 className="text-4xl font-bold text-center ">
                 Add a Scholarship
             </h1>

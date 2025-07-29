@@ -5,17 +5,16 @@ import useUserDB from '../../hooks/useUserDB';
 import {
     FaHome,
     FaFileAlt,
-    FaPlusSquare,
     FaStar,
     FaHourglassHalf,
     FaCheckCircle,
     FaTimesCircle,
     FaUser,
-    FaPlusCircle,
 } from 'react-icons/fa';
 import { IoSchoolSharp } from 'react-icons/io5';
 import { BsCheck } from "react-icons/bs";
 import { GrFormAdd } from 'react-icons/gr';
+import { FaFileSignature } from 'react-icons/fa6';
 
 
 const {
@@ -73,7 +72,7 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             {
-                                role  &&
+                                role &&
                                 <>
                                     <li>
                                         <NavLink to={'/dashboard/myAppliedScholarships'} className={liClasses}>
@@ -82,12 +81,20 @@ const DashboardLayout = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to={'/myReviews'} className={liClasses}>
+                                        <NavLink to={'/dashboard/myReviews'} className={liClasses}>
                                             <FaStar className="inline-block mr-2 text-lg" />
                                             My Reviews
                                         </NavLink>
                                     </li>
                                 </>
+                            }
+                            {
+                                role === 'user' && <li>
+                                    <NavLink to={'/dashboard/applyToAddScholarship'} className={liClasses}>
+                                        <FaFileSignature className="inline-block mr-2 text-lg animate-bounce" />
+                                        Apply Publish Scholarships
+                                    </NavLink>
+                                </li>
                             }
 
                             {

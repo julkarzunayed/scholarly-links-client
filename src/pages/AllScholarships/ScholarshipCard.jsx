@@ -39,7 +39,7 @@ const ScholarshipCard = ({ scholarship }) => {
 
                     </div>
                     {
-                        (isLoading || isLoading) ? <span className="loading text-amber-500 loading-spinner loading-md"></span> : <StarRatings rating={averageData?.averageRating}></StarRatings>
+                        (isLoading || isPending) ? <span className="loading text-amber-500 loading-spinner loading-md"></span> : <StarRatings rating={averageData?.averageRating}></StarRatings>
                     }
 
                 </div>

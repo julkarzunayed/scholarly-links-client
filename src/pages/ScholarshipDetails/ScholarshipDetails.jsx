@@ -91,7 +91,7 @@ const ScholarshipDetails = () => {
         <div className='bg-base-200 pb-4'>
             {/* Cover Photo */}
             <div
-                className="h-[250px] bg-cover bg-bottom bg-no-repeat "
+                className="h-[250px] md:h-[500px] bg-cover bg-bottom bg-no-repeat "
                 style={{
                     backgroundImage: `url(${scholarship?.campus_image})`,
                 }}>
@@ -500,13 +500,26 @@ const ScholarshipDetails = () => {
                     </div>
                 </div> */}
 
+                {
+                    !reviewsData?.reviews ?
+                        <div className={sectionBoxStyle}>
+                            <h2 className={boxTitle}>
+                                No Review Posted yeat
+                            </h2>
+                        </div>
+                        :
+                        <div className={`pt-5 mt-6 rounded-2xl bg-base-100`}>
 
-                <div className={`p- mt-6 rounded-2xl bg-base-100`}>
-                    <ReviewMarquee reviews={reviewsData?.reviews}>
+                            <h2 className={boxTitle + ` ml-10`}>
+                               Our Studets Comments:
+                            </h2>
 
-                    </ReviewMarquee>
+                            <ReviewMarquee reviews={reviewsData?.reviews}>
+                            </ReviewMarquee>
+                        </div>
+                }
 
-                </div>
+
             </div>
 
 
