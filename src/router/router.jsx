@@ -26,6 +26,7 @@ import Check from '../components/Check/Check';
 import ScholarshipApplicationPage from '../pages/ScholarshipApplicationPage/ScholarshipApplicationPage';
 import MyAppliedScholarships from '../pages/Dashboard/MyAppliedScholarships/MyAppliedScholarships';
 import Payment from '../pages/Dashboard/Payment/Payment';
+import ManageApplications from '../pages/Dashboard/ManageApplications/ManageApplications';
 
 const router = createBrowserRouter([
     {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:scholarshipId',
                 Component: Payment,
+            },
+            {
+                path: 'manageApplications/:id',
+                Component: ManageApplications
             },
 
             // Admin Routs

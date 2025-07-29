@@ -78,7 +78,7 @@ const DashboardLayout = () => {
                                     <li>
                                         <NavLink to={'/dashboard/myAppliedScholarships'} className={liClasses}>
                                             <FaFileAlt className="inline-block mr-2 text-lg" />
-                                            My Applied Applications
+                                            My Applied Scholarships
                                         </NavLink>
                                     </li>
                                     <li>

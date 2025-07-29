@@ -6,14 +6,15 @@ import LoadingPage from '../../Loading/LoadingPage';
 import { TfiDropboxAlt } from "react-icons/tfi";
 import { Link } from 'react-router';
 import { capitalizeFirstLetter } from '../../../utils/helper';
-import { FaEye, FaRegEdit } from 'react-icons/fa';
+import { FaEye, FaFileSignature, FaRegEdit } from 'react-icons/fa';
 import { ImBin } from "react-icons/im";
+import { PiGraduationCap } from "react-icons/pi";
 
 const MyAddedScholarships = () => {
     const axiosInstance = useAxiosSecure();
     const { user, loading } = useAuth();
 
-    const { data: scholarships, isLoading } = useQuery({
+    const { data: scholarships = [], isLoading } = useQuery({
         queryKey: ['scholarship_data', user?.email],
         queryFn: async () => {
             const res = await axiosInstance.get(`/scholarship?userEmail=${user?.email}`)
@@ -90,19 +91,40 @@ const MyAddedScholarships = () => {
                                                 {/* <span className='font-bold'>Service Charge: </span>
                                                 {scholarship?.service_charge} */}
                                             </td>
-                                            <td className='pt-2 p-0.5  flex justify-center items-center gap-0.5 flex-row *:border *:border-base-300 *:shadow-xs *:flex *:justify-center *:p-1.5 *:px-4 text-2xl *:rounded-sm *:hover:bg-base-300'>
-                                                <Link 
-                                                to={`/scholarshipDetails/${scholarship?._id}`}
-                                                >
-                                                    <FaEye color='green'/>
-                                                </Link>
-                                                <button>
-                                                    <FaRegEdit color=''/>
-                                                </button>
-                                                <button>
-                                                    <ImBin className='text-orange-600'/>
-                                                </button>
+                                            <td>
+                                                <div className='pt-2 p-0.5  flex justify-center items-center gap-0.5 flex-row *:border *:border-base-300 *:shadow-xs *:flex *:justify-center *:p-1.5 *:px-4 text-2xl *:rounded-sm *:hover:bg-base-300'>
+
+                                                    <button className="border" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" }}>
+                                                        <FaEye color='green' />
+                                                    </button>
+
+                                                    <button>
+                                                        <FaRegEdit color='' />
+                                                    </button>
+                                                    <button>
+                                                        <ImBin className='text-orange-600' />
+                                                    </button>
+                                                </div>
+                                                <ul className="dropdown menu w-52 transform -translate-x-1/2 rounded-box bg-base-100 shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-accent "
+                                                    popover="auto" id="popover-1" style={{ positionAnchor: "--anchor-1" }}>
+                                                    <li>
+                                                        <Link
+                                                            to={`/scholarshipDetails/${scholarship?._id}`}
+                                                        >
+                                                            <PiGraduationCap size={18} />  Scholarship Details
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link
+                                                            to={`/dashboard/manageApplications/${scholarship?._id}`}
+                                                            className=''
+                                                        >
+                                                            <FaFileSignature size={18} /> All applications
+                                                        </Link>
+                                                    </li>
+                                                </ul>
                                             </td>
+
                                         </tr>)
                                     }
                                 </tbody>

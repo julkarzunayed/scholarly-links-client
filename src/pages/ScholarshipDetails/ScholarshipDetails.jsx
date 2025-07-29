@@ -10,6 +10,9 @@ import { FaMoneyBill1Wave, FaMoneyBillTransfer } from "react-icons/fa6";
 import { capitalizeFirstLetter, ISoTimeToDateOnly } from '../../utils/helper';
 import { MdOutlineBedroomChild } from 'react-icons/md';
 import StarBorder from '../../components/StarBorder/StarBorder';
+import StarRatings from '../../components/StarRAtings/StarRatings';
+import useAxios from '../../hooks/useAxios';
+import ReviewMarquee from './ReviewMarquee';
 
 
 const textDescription = 'Sit amet consectetur adipisicing elit. Illo aperiam necessitatibus velit commodi, quidem doloribus in dolor perferendis excepturi quas vero recusandae totam accusantium illum assumenda, asperiores esse ducimus minus aspernatur. Eos enim quasi aspernatur reiciendis incidunt quo nesciunt perferendis voluptatum consequuntur libero hic esse voluptatibus est doloremque fuga molestias officiis natus illum, labore deserunt error veniam. Cum ipsa excepturi eum fugiat veritatis quia, quasi nulla est dicta vero accusamus itaque architecto sit facilis provident deserunt. Tempore error expedita totam nulla rem tempora deserunt iure voluptatibus, quos consectetur! Cupiditate eos soluta illo accusamus suscipit eligendi fugiat quasi ipsum esse reprehenderit possimus magnam voluptatibus eaque, optio inventore neque placeat beatae ducimus corrupti ut tempore deleniti enim. Rerum, aperiam nemo. Vero vitae aperiam doloribus quas placeat perferendis distinctio, deserunt culpa! Pariatur ullam aut nesciunt. At natus est saepe vero iusto, quod sit vitae iste, accusamus, deserunt quam rem debitis dolores. Sequi corporis adipisci veniam ipsum architecto, assumenda nemo sint at, libero, distinctio voluptatum praesentium vitae dolore sunt. At harum numquam fugit voluptate, culpa sed delectus laudantium, labore doloremque provident consequuntur iusto sequi velit vel a eveniet molestiae reprehenderit cupiditate debitis? '
@@ -32,18 +35,33 @@ const {
 const ScholarshipDetails = () => {
     const { user } = useAuth();
     const { id } = useParams();
-    const axiosInstance = useAxiosSecure();
+    const axiosInstance = useAxios();
+    const axiosSecure = useAxiosSecure();
     const location = useLocation();
     const [readMore, setReadMore] = useState(false);
     // console.log(id)
     const { data: scholarship, isLoading, isPending } = useQuery({
         queryKey: ['single_scholarship', id, user],
         queryFn: async () => {
-            const res = await axiosInstance.get(`/scholarship/byId/${id}?userEmail=${user?.email}`);
+            const res = await axiosSecure.get(`/scholarship/byId/${id}?userEmail=${user?.email}`);
 
             return res.data;
         }
     });
+
+
+    const { data: reviewsData, isLoading: reviewLoading, isPending: reviewPending } = useQuery({
+        queryKey: ['review_daat_with_ratings', scholarship?._id],
+        queryFn: async () => {
+            const res = await axiosInstance.get(`/reviews/average_with_reviews/${scholarship?._id}`)
+            return res.data;
+        },
+        enabled: !!scholarship?._id,
+    });
+
+    console.log(reviewsData)
+
+
     if (isLoading || isPending) {
         return <LoadingPage />
     }
@@ -94,7 +112,13 @@ const ScholarshipDetails = () => {
 
                 {/* InsTitute Description */}
 
-                <div className={sectionBoxStyle + ``}>
+                <div className={sectionBoxStyle + ` pt-4`}>
+                    <div className="flex justify-end">
+                        {/* reviewsData?.averageRating */}
+                        {
+                            (reviewLoading || reviewPending) ? <span className="loading text-amber-500 loading-spinner loading-md"></span> : <StarRatings rating={reviewsData?.averageRating}></StarRatings>
+                        }
+                    </div>
                     <h2 className={sectionTitle}>
                         {scholarship?.institute_name}
                     </h2>
@@ -460,7 +484,7 @@ const ScholarshipDetails = () => {
                     What Students Are Saying
                 </h1>
 
-                <div className={sectionBoxStyle}>
+                {/* <div className={sectionBoxStyle}>
                     <h2 className={boxTitle}>
 
                     </h2>
@@ -474,11 +498,13 @@ const ScholarshipDetails = () => {
 
                         'post_grad_job_placement'
                     </div>
-                </div>
+                </div> */}
 
 
-                <div className={sectionBoxStyle}>
+                <div className={`p- mt-6 rounded-2xl bg-base-100`}>
+                    <ReviewMarquee reviews={reviewsData?.reviews}>
 
+                    </ReviewMarquee>
 
                 </div>
             </div>

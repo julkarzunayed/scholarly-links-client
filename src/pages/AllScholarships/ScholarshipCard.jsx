@@ -1,9 +1,26 @@
 import React from 'react';
 import { capitalizeFirstLetter, ISoTimeToDateOnly } from '../../utils/helper';
 import { Link } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
+import useAxios from '../../hooks/useAxios';
+import StarRatings from '../../components/StarRAtings/StarRatings';
 
 const ScholarshipCard = ({ scholarship }) => {
-    
+    const axiosInstance = useAxios();
+
+    const { data: averageData, isLoading, isPending } = useQuery({
+        queryKey: ['average_ratings_data', scholarship?._id],
+        queryFn: async () => {
+            const res = await axiosInstance.get(`/reviews/averageOnly/${scholarship?._id}`)
+            return res.data;
+        },
+        enabled: !!scholarship?._id,
+    });
+
+    console.log(averageData)
+
+    // console.log(scholarship)
+
     return (
         <div className='rounded-2xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-accent flex flex-col'>
             <div
@@ -11,10 +28,9 @@ const ScholarshipCard = ({ scholarship }) => {
                 style={{
                     backgroundImage: `url(${scholarship?.campus_image})`,
                 }}>
-
             </div>
             <div className="p-4 flex flex-col justify-between flex-1">
-                <div className="relative h-7">
+                <div className="relative h-7 flex justify-end">
                     <div
                         className=" w-16 h-16 rounded-lg bg-cover bg-center bg-no-repeat shadow-sm shadow-cyan-100 absolute left-1 -top-14"
                         style={{
@@ -22,6 +38,10 @@ const ScholarshipCard = ({ scholarship }) => {
                         }}>
 
                     </div>
+                    {
+                        (isLoading || isLoading) ? <span className="loading text-amber-500 loading-spinner loading-md"></span> : <StarRatings rating={averageData?.averageRating}></StarRatings>
+                    }
+
                 </div>
                 <div className="">
                     <h2 className="text-3xl font-bold font-playfair-display">
