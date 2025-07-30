@@ -29,7 +29,7 @@ const MyReviews = () => {
         return <LoadingPage />
     }
 
-    console.log(reviewsData)
+    // console.log(reviewsData)
 
 
     return (

@@ -33,16 +33,16 @@ const Banner = () => {
                     <div class="w-32 h-32 bg-blue-100 border border-t-0 border-blue-200 rounded-br-full"></div>
                 </div>
                 <div className="">
-                    <div class="w-32 h-32 bg-white border border-blue-100 rounded-tr-full"></div>
-                    <div class="w-32 h-32 bg-white border border-t-0 border-blue-100 rounded-bl-full"></div>
+                    <div class="w-32 h-32 bg-white border border-accent rounded-tr-full"></div>
+                    <div class="w-32 h-32 bg-white border border-t-0 border-accent rounded-bl-full"></div>
                 </div>
                 <div className="">
                     <div class="w-32 h-32 bg-blue-100 border border-blue-200 rounded-tl-full"></div>
                     <div class="w-32 h-32 bg-blue-100 border border-t-0 border-blue-200 rounded-br-full"></div>
                 </div>
                 <div className="">
-                    <div class="w-32 h-32 bg-white border border-blue-100 rounded-tr-full"></div>
-                    <div class="w-32 h-32 bg-white border border-t-0 border-blue-100 rounded-bl-full"></div>
+                    <div class="w-32 h-32 bg-white border border-accent rounded-tr-full"></div>
+                    <div class="w-32 h-32 bg-white border border-t-0 border-accent rounded-bl-full"></div>
                 </div>
             </div> */}
             <div className=" overflow-hidden  absolute bottom-0">
@@ -53,20 +53,20 @@ const Banner = () => {
                     *:w-16 *:h-16
                     *:sm:w-20 *:sm:h-20"
                 >
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
 
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
 
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className="  border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                    <div className="  border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
                 </div>
                 <div className="flex overflow-hidden   bottom-0">
                     <div className="grid grid-cols-4 overflow-hidden
@@ -75,20 +75,20 @@ const Banner = () => {
                     *:w-16 *:h-16
                     *:sm:w-20 *:sm:h-20"
                     >
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
 
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
 
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
                     </div>
                     <div className="grid  grid-cols-4 
                     min-w-[calc(64px*4)] 
@@ -96,20 +96,20 @@ const Banner = () => {
                     *:w-16 *:h-16
                     *:sm:w-20 *:sm:h-20 overflow-hidden"
                     >
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className="  border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
 
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
 
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-blue-100 rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
                     </div>
                 </div>
             </div>

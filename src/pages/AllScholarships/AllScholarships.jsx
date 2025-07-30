@@ -21,7 +21,6 @@ const AllScholarships = () => {
     });
 
 
-    console.log(scholarships);
     return (
         <div>
             <div className="p-2  flex flex-col sm:flex-row gap-2 justify-between items-center mt-2">

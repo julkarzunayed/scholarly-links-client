@@ -15,6 +15,8 @@ import { IoSchoolSharp } from 'react-icons/io5';
 import { BsCheck } from "react-icons/bs";
 import { GrFormAdd } from 'react-icons/gr';
 import { FaFileSignature } from 'react-icons/fa6';
+import { MdOutlineStar } from 'react-icons/md';
+import { AiOutlineSetting } from "react-icons/ai";
 
 
 const {
@@ -26,7 +28,7 @@ const {
 const DashboardLayout = () => {
     const { userData, userLoading, userPending } = useUserDB();
     const role = userData?.role || 'user'
-    console.log(role)
+
     return (
         <div className="drawer lg:drawer-open max-w-[1500px] mx-auto">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -117,6 +119,15 @@ const DashboardLayout = () => {
                                                 <GrFormAdd size={22} className='absolute -bottom-2 -right-1 text-orange-500' />
                                             </span>
                                             Add A Scholarship
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={'/dashboard/manageReviews'} className={liClasses}>
+                                            <span className="relative">
+                                                <MdOutlineStar className="inline-block mr-2 text-2xl" />
+                                                <AiOutlineSetting size={14} className='absolute animate-spin -bottom-1 right-0.5 text-green-500' />
+                                            </span>
+                                            Manage All Reviews
                                         </NavLink>
                                     </li>
                                 </>

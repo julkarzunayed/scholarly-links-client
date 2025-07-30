@@ -27,7 +27,7 @@ const MyAddedScholarships = () => {
         return <LoadingPage />
     }
 
-    console.log(scholarships)
+    // console.log(scholarships)
     return (
         <div className='p-2 pt-10'>
             {

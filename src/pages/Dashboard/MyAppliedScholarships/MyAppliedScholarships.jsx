@@ -63,7 +63,7 @@ const MyAppliedScholarships = () => {
             if (result.isConfirmed) {
 
                 const res = await axiosSecure.post(`/reviews`, reviewData);
-                console.log(res.data)
+                // console.log(res.data)
                 if (res.data.insertedId) {
                     Swal.fire({
                         title: "Reviewed!",
@@ -136,10 +136,10 @@ const MyAppliedScholarships = () => {
             }
         });
 
-        console.log(updateData)
+
     }
 
-    console.log(applications)
+
     return (
         <div className='p-2 pt-10'>
             {

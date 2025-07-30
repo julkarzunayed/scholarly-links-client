@@ -17,10 +17,6 @@ const ScholarshipCard = ({ scholarship }) => {
         enabled: !!scholarship?._id,
     });
 
-    console.log(averageData)
-
-    // console.log(scholarship)
-
     return (
         <div className='rounded-2xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-accent flex flex-col'>
             <div
