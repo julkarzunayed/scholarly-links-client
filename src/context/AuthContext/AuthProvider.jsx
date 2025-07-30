@@ -43,7 +43,8 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 // Optional: refresh the token
                 const token = await currentUser.getIdToken(true);
-                console.log("Token:", token);
+                // console.log("Token:", token);
+                token
             }
             setUser(currentUser);
             setLoading(false);

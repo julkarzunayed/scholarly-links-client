@@ -12,7 +12,6 @@ const links = <>
     <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/allScholarship'}>All Scholarships</NavLink></li>
     <li><NavLink to={'/dashboard/home'}>Dashboard</NavLink></li>
-    <li><NavLink to={''}>About</NavLink></li>
 </>
 
 const NavBar = () => {

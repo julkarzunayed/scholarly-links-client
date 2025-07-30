@@ -15,7 +15,7 @@ const PublisherRout = ({ children }) => {
         return <LoadingPage />
     }
 
-    if (!user || userData?.role !== 'publisher') {
+    if (!user || (userData?.role !== 'publisher' && userData?.role !== 'admin')) {
         return <Navigate to={`/forbidden`} state={{ from: location.pathname }}></Navigate>
     }
 

@@ -29,7 +29,7 @@ const ManageApplications = () => {
         },
         enabled: !loading && !!user?.email,
     });
-    
+
 
     if (isLoading || isPending) {
         return <LoadingPage />
@@ -122,7 +122,7 @@ const ManageApplications = () => {
     };
 
 
-    console.log(applications)
+    console.log(searchTerm, degree)
 
     return (
         <div className='p-2'>
@@ -160,9 +160,8 @@ const ManageApplications = () => {
                         className="border border-gray-300 join-item max-w-[100px] px-0.5 select me-0 ">
                         <option value='' disabled={true}>Degree</option>
                         <option value=''>All</option>
-                        <option value='diploma'>Diploma</option>
+                        <option value='diploma'>Rejected</option>
                         <option value='bachelor'>Bachelor</option>
-                        <option value='masters'>Masters</option>
                     </select>
                 </div>
             </div>

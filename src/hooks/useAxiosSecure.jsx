@@ -6,7 +6,7 @@ import { getIdToken } from 'firebase/auth';
 
 const axiosSecure = axios.create({
     // baseURL: `http://localhost:3000/`
-    baseURL: `https://scholarly-links-server-pink.vercel.app`
+    baseURL: `http://localhost:3000/`
 })
 
 const useAxiosSecure = () => {

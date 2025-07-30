@@ -89,16 +89,16 @@ const DashboardLayout = () => {
                                 </>
                             }
                             {
-                                role === 'user' && <li>
+                                (role === 'user') && <li>
                                     <NavLink to={'/dashboard/applyToAddScholarship'} className={liClasses}>
                                         <FaFileSignature className="inline-block mr-2 text-lg animate-bounce" />
-                                        Apply Publish Scholarships
+                                        Apply to Publish Scholarships
                                     </NavLink>
                                 </li>
                             }
 
                             {
-                                role === 'publisher' &&
+                                (role === 'publisher' || role === 'admin') &&
                                 <>
 
                                     <li>

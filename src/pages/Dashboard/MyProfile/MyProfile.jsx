@@ -104,7 +104,7 @@ const MyProfile = () => {
         });
 
     }
-    // console.log(applyData)
+    
     return (
         <div className='p-5 '>
             {/* Profile section Starts */}
@@ -139,7 +139,7 @@ const MyProfile = () => {
                         </div>
                     </div>
 
-                    <div className=" z-10 flex flex-col  items-center md:items-start space-y-2">
+                    <div className="  flex flex-col  items-center md:items-start space-y-2">
                         <h3 className="font-eb-garamond font-bold text-3xl">
                             {user?.displayName}
                         </h3>
@@ -158,14 +158,16 @@ const MyProfile = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex items-center *:max-w-[250px] *:flex-1 text-center">
+                <div className="flex items-center justify-between px-5 gap-2 *:max-w-[250px] *:flex-1 text-center">
+
+                    <button className="flex btn btn- bg-gray-400 justify-center items-center gap-1.5">
+                        <GrSettingsOption size={22} /> Profile Settings
+                    </button>
+
                     <button
                         onClick={handleLogout}
                         className="flex btn btn-warning justify-center items-center gap-1.5">
                         <RiLogoutCircleRLine size={22} />  Log Out
-                    </button>
-                    <button className="flex btn btn- bg-gray-400 justify-center items-center gap-1.5">
-                        <GrSettingsOption size={22} /> Profile Settings
                     </button>
                 </div>
 
@@ -176,9 +178,7 @@ const MyProfile = () => {
 
                 {/* Apply to add scholarship Button */}
                 {
-                    !applyStatusLoading && (
-                        applyData?.status === 'not_applied' &&
-
+                    (!applyStatusLoading && applyData?.status === 'not_applied' && userData?.role !== 'admin') && (
                         <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-between mt-3">
                             <p className="text-lg font-montserrat italic ml-2">
                                 Wanna publish your Scholarships?
@@ -259,10 +259,15 @@ const MyProfile = () => {
                                 </p>
                                 <p className="flex items-center 
                                 gap-2">
-                                    <FcApproval size={18}/> {ISoTimeToDate(applyData?.applied_at)}
+                                    <FcApproval size={18} /> {ISoTimeToDate(applyData?.applied_at)}
                                 </p>
                             </div>
                         </div>
+                    </div>
+                }
+                {
+                    userData?.role === 'admin' && <div className="">
+                        <h3 className="text-center">Admin Profile</h3>
                     </div>
                 }
 

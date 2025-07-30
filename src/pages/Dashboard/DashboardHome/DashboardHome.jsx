@@ -2,19 +2,32 @@ import React from 'react';
 import useUserDB from '../../../hooks/useUserDB';
 import LoadingPage from '../../Loading/LoadingPage';
 
+import ForbiddenPage from '../../ForbiddenPage/ForbiddenPage';
+import AdminDashboard from './AdminDashboard';
+import PublisherDashboard from './PublisherDashboard';
+import UserDashboard from './UserDashboard';
+
+
 const DashboardHome = () => {
     const { userData, userLoading, userPending } = useUserDB();
+    const role = userData?.role
 
-
-    if(userLoading || userPending) {
-        return <LoadingPage/>
+    if (userLoading || userPending) {
+        return <LoadingPage />
     }
 
-    return (
-        <div>
-            DashBoard Home For {userData?.role}
-        </div>
-    );
+    if (role === 'user') {
+        return <UserDashboard></UserDashboard>
+    }
+    else if (role === 'rider') {
+        return <PublisherDashboard />
+    }
+    else if (role === 'admin') {
+        return <AdminDashboard></AdminDashboard>
+    }
+    else {
+        return <ForbiddenPage/>
+    }
 };
 
 export default DashboardHome;

@@ -1,16 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
-import { capitalizeFirstLetter, ISoTimeToDate } from '../../../utils/helper';
-import { FaEye, FaFileSignature } from 'react-icons/fa6';
+import { ISoTimeToDate } from '../../../utils/helper';
 import { FaRegEdit } from 'react-icons/fa';
 import { ImBin } from 'react-icons/im';
 import { Link, useNavigate } from 'react-router';
 import { TfiDropboxAlt } from 'react-icons/tfi';
-import { PiGraduationCap } from 'react-icons/pi';
 import StarRatings from '../../../components/StarRAtings/StarRatings';
 import Swal from 'sweetalert2';
+import LoadingPage from '../../Loading/LoadingPage';
 
 const MyReviews = () => {
     const axiosSecure = useAxiosSecure();
@@ -26,6 +24,11 @@ const MyReviews = () => {
         enabled: !loading || !!user?.email,
     });
 
+
+    if (reviewLoading || reviewPending) {
+        return <LoadingPage />
+    }
+
     console.log(reviewsData)
 
 
@@ -35,7 +38,7 @@ const MyReviews = () => {
                 reviewsData?.length !== 0 ?
                     <div className="">
                         <h1 className="text-center mb-3 text-4xl font-bold font-playfair-display">
-                            Your added reviewsData
+                            Your Reviews
                         </h1>
                         <div className="overflow-x-auto">
                             <table className="table table-zebra min-w-4xl">
@@ -164,13 +167,13 @@ const MyReviews = () => {
                                 className='text-4xl mb-2 animate-bounce'
                             />
                             <h1 className="text-center mb-3 text-3xl font-bold font-playfair-display">
-                                No Scholarship added
+                                No scholarship Reviewed
                             </h1>
                             <Link
                                 to={'/dashboard/addScholarship'}
                                 className='btn btn-primary text-black'
                             >
-                                Add a Scholarship
+                                Review Your applied scholarship
                             </Link>
                         </div>
                     </div>
