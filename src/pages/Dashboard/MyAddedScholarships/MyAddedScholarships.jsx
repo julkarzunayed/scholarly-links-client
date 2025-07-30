@@ -94,7 +94,7 @@ const MyAddedScholarships = () => {
                                             <td>
                                                 <div className='pt-2 p-0.5  flex justify-center items-center gap-0.5 flex-row *:border *:border-base-300 *:shadow-xs *:flex *:justify-center *:p-1.5 *:px-4 text-2xl *:rounded-sm *:hover:bg-base-300'>
 
-                                                    <button className="border" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" }}>
+                                                    <button className="border" popoverTarget={`popover-${scholarship?._id}`} style={{ anchorName: `--anchor-${scholarship?._id}` }}>
                                                         <FaEye color='green' />
                                                     </button>
 
@@ -106,7 +106,7 @@ const MyAddedScholarships = () => {
                                                     </button>
                                                 </div>
                                                 <ul className="dropdown menu w-52 transform -translate-x-1/2 rounded-box bg-base-100 shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-accent "
-                                                    popover="auto" id="popover-1" style={{ positionAnchor: "--anchor-1" }}>
+                                                    popover="auto" id={`popover-${scholarship?._id}`} style={{ positionAnchor: `--anchor-${scholarship?._id}` }}>
                                                     <li>
                                                         <Link
                                                             to={`/scholarshipDetails/${scholarship?._id}`}

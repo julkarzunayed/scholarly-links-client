@@ -121,15 +121,7 @@ const DashboardLayout = () => {
                                             Add A Scholarship
                                         </NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to={'/dashboard/manageReviews'} className={liClasses}>
-                                            <span className="relative">
-                                                <MdOutlineStar className="inline-block mr-2 text-2xl" />
-                                                <AiOutlineSetting size={14} className='absolute animate-spin -bottom-1 right-0.5 text-green-500' />
-                                            </span>
-                                            Manage All Reviews
-                                        </NavLink>
-                                    </li>
+
                                 </>
                             }
                             {
@@ -151,6 +143,15 @@ const DashboardLayout = () => {
                                         <NavLink to={'/dashboard/rejectedPublishersApplications'} className={liClasses}>
                                             <FaTimesCircle className="inline-block mr-2 text-lg text-orange-700" />
                                             Rejected Publisher Applications
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={'/dashboard/manageReviews'} className={liClasses}>
+                                            <span className="relative">
+                                                <MdOutlineStar className="inline-block mr-2 text-2xl" />
+                                                <AiOutlineSetting size={14} className='absolute animate-spin -bottom-1 right-0.5 text-green-500' />
+                                            </span>
+                                            Manage All Reviews
                                         </NavLink>
                                     </li>
                                 </>

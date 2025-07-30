@@ -21,7 +21,7 @@ const MyAppliedScholarships = () => {
     const axiosSecure = useAxiosSecure();
     const queryClient = useQueryClient();
 
-    const { data: applications, isLoading } = useQuery({
+    const { data: applications, isLoading, refetch } = useQuery({
         queryKey: ['user_applications_data', user?.email],
         queryFn: async () => {
             const res = await axiosInstance.get(`/application?email=${user?.email}&userEmail=${user?.email}`)
@@ -33,6 +33,8 @@ const MyAppliedScholarships = () => {
     if (isLoading) {
         return <LoadingPage />
     }
+
+    // console.log(applications)
 
     const handleReviewSubmit = (e, scholarship) => {
         e.preventDefault();
@@ -65,6 +67,7 @@ const MyAppliedScholarships = () => {
                 const res = await axiosSecure.post(`/reviews`, reviewData);
                 // console.log(res.data)
                 if (res.data.insertedId) {
+                    refetch()
                     Swal.fire({
                         title: "Reviewed!",
                         text: "Your review successfully posted.",
@@ -116,9 +119,10 @@ const MyAppliedScholarships = () => {
                     queryClient.invalidateQueries([
                         'user_applications_data',
                     ])
+                    refetch();
                     Swal.fire({
-                        title: "Reviewed!",
-                        text: "Your review successfully posted.",
+                        title: "Reviewed Modified!",
+                        text: "Your review successfully Modified.",
                         icon: "success"
                     });
                 }
@@ -146,7 +150,7 @@ const MyAppliedScholarships = () => {
                 applications?.length !== 0 ?
                     <div className="">
                         <h1 className="text-center mb-3 text-4xl font-bold font-playfair-display">
-                            Your added applications
+                            Your applied Scholarships
                         </h1>
                         <div className="overflow-x-auto border border-base-content/5">
                             <table className="table table-zebra min-w-4xl">
@@ -253,8 +257,8 @@ const MyAppliedScholarships = () => {
                                                                 application?.review_status === 'reviewed' ? 'Edit Review'
                                                                     : 'Review Scholarship'}
                                                         </div>
-                                                        <dialog id="my_modal_2" className="modal modal-bottom sm:modal-middle z-20">
-                                                            <div className="modal-box shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-accent">
+                                                        <dialog id="my_modal_2" className="modal modal-bottom sm:modal-middle  z-20">
+                                                            <div className="modal-box bg-base-300 shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow-accent">
                                                                 <div className="flex items-center gap-3">
                                                                     <div className="avatar">
                                                                         <div className="mask mask-squircle h-12 w-12">
@@ -337,7 +341,7 @@ const MyAppliedScholarships = () => {
                                                                 {
                                                                     application?.review_status === 'reviewed' &&
                                                                     <form className='' onSubmit={(e) => handelEditReview(e, application)}>
-                                                                        <fieldset className='fieldset mt-2 bg-base-200 rounded-box  p-4'>
+                                                                        <fieldset className='fieldset mt-2 bg-base-100 rounded-box  p-4'>
                                                                             <legend className="fieldset-legend">Edit Your Review</legend>
 
                                                                             <div className="w-full ">

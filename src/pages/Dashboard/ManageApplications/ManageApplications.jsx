@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link, useParams } from 'react-router';
 import LoadingPage from '../../Loading/LoadingPage';
-import { capitalFirstLatterAllWord, capitalizeFirstLetter, ISoTimeToDate, ISoTimeToDateOnly } from '../../../utils/helper';
+import { capitalFirstLatterAllWord, capitalizeFirstLetter, ISoTimeToDate } from '../../../utils/helper';
 import { IoMail } from 'react-icons/io5';
 import { FaEye, FaPhoneFlip } from 'react-icons/fa6';
 import { TbGenderBigender } from "react-icons/tb";
@@ -12,6 +12,7 @@ import { FaFemale, FaMale, FaRegEdit } from 'react-icons/fa';
 import NoResultFound from '../../../components/NoResultFound/NoResultFound';
 import { MdOutlineCancelPresentation } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { FcApproval } from 'react-icons/fc';
 
 const ManageApplications = () => {
     const axiosSecure = useAxiosSecure();
@@ -19,9 +20,12 @@ const ManageApplications = () => {
     const { id } = useParams();
     const [searchTerm, setSearchTerm] = useState('');
     const [degree, setDegree] = useState('');
-    console.log(id)
+    // console.log(id)
 
-    const { data: applications, isLoading, isPending } = useQuery({
+    searchTerm
+    degree
+
+    const { data: applications, isLoading, isPending, refetch } = useQuery({
         queryKey: ['application_of_scholarship', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/applications/byScholarship/${id}?userEmail=${user?.email}`)
@@ -109,20 +113,73 @@ const ManageApplications = () => {
         Swal.fire({
             title: 'Application Details',
             html: htmlContent,
-            showConfirmButton: true, 
+            showConfirmButton: true,
             confirmButtonText: 'Close',
             customClass: {
-                container: 'my-swal-container', 
+                container: 'my-swal-container',
                 popup: 'my-swal-popup',
                 title: 'my-swal-title',
                 htmlContainer: 'my-swal-html-container',
             },
-            width: 'auto',  
+            width: 'auto',
         });
     };
 
 
-    console.log(searchTerm, degree)
+    //status
+
+    const handleFeedback = (application, status) => {
+        // console.log(application)
+        Swal.fire({
+            title: `${status === 'approved' ? 'Approve' : 'Reject'} ${application?.name}`,
+            // showDenyButton: true,
+            showCancelButton: true,
+            icon: `${status === 'approved' ? 'info' : 'warning'}`,
+            confirmButtonText: `${status === 'approved' ? 'Approve' : 'Reject'}`,
+            confirmButtonColor: `${status === 'approved' ? 'green' : 'red'}`,
+            cancelButtonText: 'X',
+            // denyButtonText: `Don't save`,
+            input: "textarea",
+            inputLabel: `Feedback`,
+            inputPlaceholder: "Type Your Feedback here...",
+            inputAttributes: {
+                "aria-label": "Type Your Feedback here"
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return "You need to Add a feedback!";
+                }
+            }
+        }).then(async (result) => {
+            // console.log(result)
+            if (result.isConfirmed) {
+                const res = await axiosSecure.patch(`/application/byId/${application?._id}?userEmail=${user?.email}`,
+                    {
+                        status: status,
+                        feedback: result?.value,
+                        status_updated_at: new Date().toISOString(),
+                    }
+                )
+
+                console.log(res);
+
+                if (res.data?.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        title: `${status === 'approved' ? 'Approve' : 'Reject'}`,
+                        text: "Your Request completed success fully",
+                        icon: "success"
+                    });
+                }
+                // Swal.fire("Saved!", "", "success");
+            } else if (result.isDenied) {
+                Swal.fire("Changes are not saved", "", "info");
+            }
+        });
+    }
+
+
+    // console.log(searchTerm, degree)
 
     return (
         <div className='p-2'>
@@ -158,12 +215,13 @@ const ManageApplications = () => {
                         onChange={(e) => { setDegree(e.target.value) }}
                         defaultValue=""
                         className="border border-gray-300 join-item max-w-[100px] px-0.5 select me-0 ">
-                        <option value='' disabled={true}>Degree</option>
+                        <option value='' disabled={true}>Status</option>
                         <option value=''>All</option>
                         <option value='diploma'>Rejected</option>
-                        <option value='bachelor'>Bachelor</option>
+                        <option value='bachelor'>Approved</option>
                     </select>
                 </div>
+
             </div>
 
             {
@@ -182,6 +240,7 @@ const ManageApplications = () => {
                                                     <th>Applicant Name</th>
                                                     <th>Scholarship</th>
                                                     <th>Results</th>
+                                                    <th>Feedback</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -195,7 +254,7 @@ const ManageApplications = () => {
                                                             <div className="flex items-center">
                                                                 <div className="avatar mx-auto">
                                                                     <div
-                                                                        title={user?.displayName}
+                                                                        title={application?.name}
                                                                         // className="hidden sm:block border-[1px] border-blue-300 rounded-full h-10 w-10 bg-cover bg-center bg-no-repeat"
                                                                         style={{
                                                                             backgroundImage: `url(${application?.photo})`,
@@ -236,6 +295,7 @@ const ManageApplications = () => {
                                                                 More about Scholarship
                                                             </Link>
                                                         </td>
+                                                        {/* ---------Result---------------- */}
                                                         <td>
 
                                                             <div className="">
@@ -252,21 +312,54 @@ const ManageApplications = () => {
                                                             </div>
 
                                                         </td>
+                                                        {/* ---------Feedback----------------- */}
+                                                        <td>
+                                                            {
+                                                                application?.feedback ?
+                                                                    <div className="">
+                                                                        <p className="text-xs max-w-[250px] ">
+                                                                            {application?.feedback}
+                                                                        </p>
+                                                                    </div>
+                                                                    :
+                                                                    <div className="">
+                                                                        No Feedback added
+                                                                    </div>
+                                                            }
 
+
+
+                                                        </td>
+                                                        {/* --------Action buttons -------------- */}
                                                         <td className='p-0'>
-                                                            <div className="pt- h-full p-0.5  flex flex-col justify-center items-center gap-0.5  *:border *:border-base-300 *:shadow-xs *:flex *:justify-center *:p-0.5 *:px-4 *:w-full text-xl *:rounded-sm *:hover:bg-base-300">
+                                                            <div className="pt- h-full p-0.5  flex flex-col justify-center items-center gap-0.5  *:border *:border-base-300 *:shadow-xs *:flex *:justify-center *:gap-2 *:p-0.5 *:px-4 *:w-full text-xl *:rounded-sm *:hover:bg-base-300">
                                                                 <button
                                                                     className=''
                                                                     onClick={() => handelViewDetails(application)}
                                                                 >
                                                                     <FaEye color='green' />
                                                                 </button>
-                                                                <button className='text-[17px]' title='Edit application'>
-                                                                    Feedback
-                                                                </button>
-                                                                <button title='Cancel Application' className=''>
-                                                                    <MdOutlineCancelPresentation className='text-orange-600' />
-                                                                </button>
+                                                                {
+                                                                    application?.status === 'approved' ||
+                                                                    <button onClick={() => handleFeedback(application, 'approved')} className='' title='Edit application'>
+                                                                        <FcApproval className='text-orange-600' />
+                                                                        <span className="text-[17px]">
+                                                                            Approve
+                                                                        </span>
+
+                                                                    </button>
+                                                                }
+
+                                                                {
+                                                                    application?.status === 'rejected' ||
+                                                                    <button onClick={() => handleFeedback(application, 'rejected')} title='Reject Application' className='text-orange-600'>
+                                                                        <MdOutlineCancelPresentation />
+                                                                        <span className="text-[17px]">
+                                                                            Reject
+                                                                        </span>
+                                                                    </button>
+                                                                }
+
                                                             </div>
                                                         </td>
                                                     </tr>)
@@ -276,7 +369,7 @@ const ManageApplications = () => {
                                     </div>
                                 </div>
                                 :
-                               <NoResultFound />
+                                <NoResultFound />
                         }
                     </div>
                     :

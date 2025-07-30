@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { use, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import { capitalizeFirstLetter } from '../../utils/helper';
@@ -21,10 +21,11 @@ const ScholarshipApplicationPage = () => {
     // const { id } = useParams();
     const location = useLocation();
     const countryName = use(countriesNamePromise);
-    const { data: stateData } = location.state;
+    const stateData = location.state?.data;
     const { user, loading: authLoading } = useAuth();
     const { userData: dbUser, userLoading } = useUserDB();
     const axiosInstance = useAxiosSecure();
+    const navigate = useNavigate();
 
     const [imageFile, setImageFile] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -36,14 +37,14 @@ const ScholarshipApplicationPage = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    // console.log(stateData)
+    console.log(stateData)
 
     if (authLoading || userLoading) {
         return <LoadingPage />
     }
 
     if (!stateData?.scholarshipId && !stateData?.institute_name) {
-        return
+        return <LoadingPage />
     }
 
 
@@ -153,11 +154,13 @@ const ScholarshipApplicationPage = () => {
                 console.log(result);
 
                 if (result?.data?.insertedId) {
+                    applicationData._id = result?.data?.insertedId;
+
                     setApplicationId(result?.data?.insertedId)
                     setLoading(false)
                     Swal.fire({
                         title: "Application Submitted?",
-                        text: "Will you pay the <strong>Application Fee</strong> now?",
+                        html: `Will you pay the <strong>Application Fee</strong> now?`,
                         icon: "question",
                         showCancelButton: true,
                         cancelButtonText: "No, Later",
@@ -166,22 +169,30 @@ const ScholarshipApplicationPage = () => {
                         confirmButtonText: "Yes, Pay Now!"
                     }).then((result) => {
                         if (result.isConfirmed) {
+                            navigate(`/dashboard/payment/${stateData?._id}`, {
+                                state: {
+                                    application: applicationData,
+                                }
+                            });
                             Swal.fire({
-                                title: "Payed!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
+                                title: "Navigating to payment page",
+                                showConfirmButton: false,
+                                icon: 'success',
+                                timer: 1500
                             });
                         } else {
                             Swal.fire({
-                                title: "Pay later!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
+                                title: "Check Your Application",
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 1500
                             });
+                            navigate('/dashboard/myAppliedScholarships')
                         }
 
                     });
                 } else { setLoading(false) }
-            }else{
+            } else {
                 setLoading(false)
             }
         });
@@ -370,7 +381,8 @@ const ScholarshipApplicationPage = () => {
                             <input
                                 className='input w-full'
                                 placeholder='GPA or CGPA'
-                                type="text"
+                                type="number"
+                                step="0.01"
                                 onWheel={(e) => e.target.blur()}
                                 {...register('ssc_result', {
                                     required: 'SSC Result is required',
@@ -404,6 +416,7 @@ const ScholarshipApplicationPage = () => {
                                 className='input w-full'
                                 placeholder='GPA or CGPA'
                                 type="number"
+                                step="0.01"
                                 onWheel={(e) => e.target.blur()}
                                 {...register('hsc_result', {
                                     required: 'HSC Result is required',

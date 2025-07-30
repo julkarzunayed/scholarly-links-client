@@ -47,11 +47,13 @@ const PaymentForm = () => {
         e.preventDefault();
         if (!stripe || !elements) {
             setPaymentLoading(false);
+            navigate('/dashboard/myAppliedScholarships')
             return;
         }
 
         if (!application) {
             setPaymentLoading(false);
+            navigate('/dashboard/myAppliedScholarships')
             return
         }
 
@@ -163,9 +165,12 @@ const PaymentForm = () => {
         <div>
             <form
                 onSubmit={handlePaymentSubmit}
-                className='space-y-4 mt-6 bg-base-300 p-6 rounded-xl shadow-accent shadow-md w-full max-w-md mx-auto '
+                className='space-y-4 mt-6 bg-base-300 p-6 text-base-content rounded-xl shadow-accent shadow-md w-full max-w-md mx-auto '
             >
-                <CardElement />
+                <span >
+                    <CardElement className='text-base-content'/>
+
+                </span>
                 <p className="text-red-500">{cardError}</p>
                 <button
                     role='submit'

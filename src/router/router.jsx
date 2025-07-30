@@ -28,7 +28,9 @@ import MyAppliedScholarships from '../pages/Dashboard/MyAppliedScholarships/MyAp
 import Payment from '../pages/Dashboard/Payment/Payment';
 import ManageApplications from '../pages/Dashboard/ManageApplications/ManageApplications';
 import MyReviews from '../pages/Dashboard/MyReviews/MyReviews';
-import ManageREviews from '../pages/Dashboard/ManageReviews/ManageREviews';
+import ManageReviews from '../pages/Dashboard/ManageReviews/ManageReviews';
+
+
 
 const router = createBrowserRouter([
     {
@@ -100,9 +102,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'manageReviews',
-                element: <PublisherRout>
-                    <ManageREviews />
-                </PublisherRout>
+                element: <AdminRouters>
+                    <ManageReviews />
+                </AdminRouters>
             },
 
             // Admin Routs

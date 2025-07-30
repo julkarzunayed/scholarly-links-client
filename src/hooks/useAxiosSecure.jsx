@@ -4,9 +4,11 @@ import useAuth from './useAuth';
 import { useNavigate } from 'react-router';
 import { getIdToken } from 'firebase/auth';
 
+//https://scholarly-links-server.vercel.app
+
 const axiosSecure = axios.create({
-    // baseURL: `http://localhost:3000/`
-    baseURL: `https://scholarly-links-server.vercel.app`
+    baseURL: `http://localhost:3000`
+    // baseURL: `https://scholarly-links-server.vercel.app`
 })
 
 const useAxiosSecure = () => {
@@ -46,6 +48,8 @@ axiosSecure.interceptors.request.use(async (config) => {
 export default useAxiosSecure;
 
 
+
+//https://scholarly-links-server.vercel.app
 
 
 // import axios from 'axios';
