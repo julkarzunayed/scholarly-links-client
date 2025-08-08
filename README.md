@@ -1,8 +1,8 @@
 # ScholarlyLinks
 
 ## 🌐 Links to Check
-- [ScholarlyLinks Server GitHub Repo]()
-- [Site Live Link]()
+- [ScholarlyLinks Server GitHub Repo](https://github.com/julkarzunayed/scholarly-links-server)
+- [Site Live Link](https://scholarly-link-auth.web.app/)
 
 ## Project Overview
 
