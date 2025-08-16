@@ -6,6 +6,8 @@ import ScholarshipCard from '../../AllScholarships/ScholarshipCard';
 import NoResultFound from '../../../components/NoResultFound/NoResultFound';
 import { Link } from 'react-router';
 import StarBorder from '../../../components/StarBorder/StarBorder';
+import HomeSectionTitle from '../../../components/HomeSectionTitle/HomeSectionTitle';
+import TopScholarshipCards from './TopScholarshipCards';
 
 
 const TopScholarship = () => {
@@ -26,7 +28,7 @@ const TopScholarship = () => {
         return <LoadingPage></LoadingPage>
     }
 
-    const filteredScholarships = scholarships?.filter((scholarship, i) => i < 6)
+    const filteredScholarships = scholarships?.filter((scholarship, i) => i < 4)
 
     // console.log(filteredScholarships)
 
@@ -34,17 +36,19 @@ const TopScholarship = () => {
         <div>
             <div className="max-w-[1536px] mx-auto">
                 <div className="p-2  flex flex-col sm:flex-row gap-2 justify-between items-center mt-2">
-                    <h2 className="text-xl sm:text-3xl font-bold">
-                        Top Scholarships
-                    </h2>
+                    {/* ----------title */}
+                    <HomeSectionTitle
+                        text1={'Top '}
+                        text2={'Scholarships'}
+                    />
                 </div>
                 <div className="">
                     {
                         filteredScholarships?.length !== 0 ?
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                                 {
                                     filteredScholarships?.map(scholarship => (
-                                        <ScholarshipCard
+                                        <TopScholarshipCards
                                             scholarship={scholarship}
                                             key={scholarship?._id} />
                                     ))

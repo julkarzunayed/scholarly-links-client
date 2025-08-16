@@ -28,7 +28,7 @@ const bgCircle = ' border border-base-300 rounded-bl-full rounded-tr-full transf
 
 const Banner = () => {
     return (
-        <div className='relative p-5 overflow-hidden max-w-[1536px] mx-auto'>
+        <div className='relative pt-10 p-3 overflow-hidden max-w-[1536px] mx-auto'>
             {/* <div className="flex ">
                 <div className="">
                     <div class="w-32 h-32 bg-blue-100 border border-blue-200 rounded-tl-full"></div>
@@ -140,8 +140,8 @@ const Banner = () => {
                                     <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center md:text-left">
                                         {slider.title}
                                     </h1>
-                                    <button className=" btn btn-primary mt-5">
-                                        Apply Now
+                                    <button className="font-bold text-lg py-2 hover:text-white text-black bg-linear-to-l from-accent from-50% to-secondary to-50% bg-size-[500%_100%] hover:bg-right transition-all rounded-lg duration-1000 ease-in-out bg-left px-10 mt-5">
+                                        Find a Scholarship
                                     </button>
                                 </div>
                                 {/* Images */}
@@ -159,7 +159,7 @@ const Banner = () => {
 
                                     </div>
                                     <div
-                                        className="w-52 h-52 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-tr-full bg-cover bg-center bg-no-repeat bg-green-300 absolute top-0 right-1/12 md:right-3">
+                                        className="w-52 h-52 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-tr-full bg-cover bg-center bg-no-repeat bg-lime-500 absolute top-0 right-1/12 md:right-3">
 
                                     </div>
                                 </div>

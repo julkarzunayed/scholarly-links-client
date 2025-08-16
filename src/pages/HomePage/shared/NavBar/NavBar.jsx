@@ -45,8 +45,8 @@ const NavBar = () => {
     }
     return (
         <div className="h-10">
-            <div className="fixed w-full  bg-primary top-0 z-50">
-                <div className='max-w-[1536px] mx-auto px-2 py-2 shadow-sm sm:py-3 flex justify-between items-center'>
+            <div className="fixed w-full   bg-gradient-to-r from-primary from-50%  to-teal-500 to-90% top-0 z-50">
+                <div className='max-w-[1536px] mx-auto px-2 py-2  sm:py-3 flex justify-between items-center'>
                     <ScholarlyLinkLogo></ScholarlyLinkLogo>
                     <div className="hidden lg:flex gap-1 ">
                         <ul className='flex flex-row text-white font-bold *:hover:text-secondary  menu gap-3'>

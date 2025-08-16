@@ -12,6 +12,8 @@
 /* secondary =  FF4500   */
 /* accent =  003366   */
 
+/* new = 4EBFDD */
+
 
 
 @plugin "daisyui/theme" {
@@ -22,16 +24,16 @@
 
   --color-base-100: oklch(100% 0 0);
   --color-base-200: oklch(96% 0 263);
-  --color-base-300: oklch(92% 0.25 263);
+  --color-base-300: oklch(92% 0.001 263);
   --color-base-content: oklch(27.807% 0.029 256.847);
 
-  --color-primary: oklch(54.7% 0.25 263);
+  --color-primary: oklch(75% 0.11 218);
   --color-primary-content: oklch(89.824% 0.057 266.839);
 
-  --color-secondary: oklch(66% 0.23 35);
+  --color-secondary: oklch(70% 0.23 35);
   --color-secondary-content: oklch(100% 0 0);
 
-  --color-accent: oklch(32% 0.10 254);
+  --color-accent: oklch(30% 0.085 254);
   --color-accent-content: oklch(100% 0 0);
 
   --color-neutral: oklch(96.794% 0.02 240);
@@ -75,10 +77,13 @@
   --color-base-300: oklch(15.176% 0.001 252);
 
   --color-base-content: oklch(85% 0.02 252);
+
   --color-primary: oklch(30% 0.085 253);
   --color-primary-content: oklch(98% 0.01 240);
+
   --color-secondary: oklch(80.4% 0.143 123);
   --color-secondary-content: oklch(98% 0.01 120);
+
   --color-accent: oklch(70% 0.3 290);
   --color-accent-content: oklch(98% 0.01 290);
   --color-neutral: oklch(15.918% 0.04 240);

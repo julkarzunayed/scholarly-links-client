@@ -22,7 +22,7 @@ const AllScholarships = () => {
 
 
     return (
-        <div>
+        <div className='pt-20 max-w-[1536px] mx-auto'>
             <div className="p-2  flex flex-col sm:flex-row gap-2 justify-between items-center mt-2">
                 <h2 className="text-xl sm:text-3xl font-bold">
                     All Scholarships

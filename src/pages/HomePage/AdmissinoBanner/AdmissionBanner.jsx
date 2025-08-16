@@ -3,19 +3,24 @@ import React from 'react';
 import graduateGirl from '../../../assets/graduate_girl.png'
 import { Link } from 'react-router';
 import StarBorder from '../../../components/StarBorder/StarBorder';
+import HomeSectionTitle from '../../../components/HomeSectionTitle/HomeSectionTitle';
 
 const AdmissionBanner = () => {
     return (
-        <div className='py-10 p-2'>
+        <div className='py-10 p-2 max-w-[1536px] mx-auto'>
             <div className="flex flex-col sm:flex-row *:flex-1 gap-5">
 
                 {/* ------Content Box--------- */}
 
                 <div className="flex items-center text-center sm:text-left">
                     <div className="space-y-4">
-                        <h1 className="text-3xl  sm:text-4xl md:text-5xl font-bold">
-                            Choose A Right Scholarship for You
-                        </h1>
+                        <HomeSectionTitle
+                            text1={'Choose A Right Scholarship'}
+                            text2={" For You"}
+                            // color={ }
+                            mb={'mb-2'}
+                            mt={'mt-1'}
+                        />
                         <p className="text-primary-content max-w-lg">
                             Complete your profile and receive real admission offers to multiple schools, many with scholarships attached. Having schools compete for you this way takes the uncertainty out of the traditional application process.
                         </p>

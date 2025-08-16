@@ -1,11 +1,13 @@
 import React from 'react';
-import { capitalizeFirstLetter, ISoTimeToDateOnly } from '../../utils/helper';
+
 import { Link } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
-import useAxios from '../../hooks/useAxios';
-import StarRatings from '../../components/StarRAtings/StarRatings';
+import useAxios from '../../../hooks/useAxios';
+import { capitalizeFirstLetter, ISoTimeToDateOnly } from '../../../utils/helper';
+import StarRatings from '../../../components/StarRAtings/StarRatings';
 
-const ScholarshipCard = ({ scholarship }) => {
+
+const TopScholarshipCards = ({ scholarship }) => {
     const axiosInstance = useAxios();
 
     const { data: averageData, isLoading, isPending } = useQuery({
@@ -19,13 +21,15 @@ const ScholarshipCard = ({ scholarship }) => {
 
     return (
         <div className='rounded-2xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow- bg-base-100 flex flex-col'>
+            {/* Top Photo */}
             <div
                 className="h-[170px] bg-cover bg-bottom bg-no-repeat rounded-t-2xl"
                 style={{
                     backgroundImage: `url(${scholarship?.campus_image})`,
                 }}>
             </div>
-            <div className="p-4 flex flex-col justify-between flex-1">
+            <div className="p-4 flex flex-col justify-between flex-1 text-sm">
+                {/* Logo section */}
                 <div className="relative h-7 flex justify-end">
                     <div
                         className=" w-16 h-16 rounded-lg bg-cover bg-center bg-no-repeat shadow-sm shadow-cyan-100 absolute left-1 -top-14"
@@ -39,11 +43,12 @@ const ScholarshipCard = ({ scholarship }) => {
                     }
 
                 </div>
+                {/* Name */}
                 <div className="">
-                    <h2 className="text-3xl font-bold font-playfair-display">
+                    <h2 className=" text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-playfair-display">
                         {scholarship?.institute_name}
                     </h2>
-                    <p className="text-gray-500 font-semibold">
+                    <p className="text-gray-500   font-semibold">
                         {scholarship?.institute_city}, {scholarship?.institute_country}
                     </p>
                 </div>
@@ -54,8 +59,8 @@ const ScholarshipCard = ({ scholarship }) => {
                 </p>
                 <hr className='border-t border-base-300 my-2' />
                 <div className="mt-4 flex justify-between">
-                    <span className='font-semibold'>Application Deadline: </span>
-                    <span className="border text-black border-green-200 px-3 py-1 rounded-2xl bg-lime-200">
+                    <span className='font-semibold'> Deadline: </span>
+                    <span className="border text-accent border-secondary/20  px-3 py-1 rounded-2xl bg-secondary/10">
                         {ISoTimeToDateOnly(scholarship?.application_deadline)}
                     </span>
                 </div>
@@ -94,4 +99,4 @@ const ScholarshipCard = ({ scholarship }) => {
     );
 };
 
-export default ScholarshipCard;
+export default TopScholarshipCards;
