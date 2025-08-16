@@ -59,7 +59,16 @@ const ScholarshipDetails = () => {
         enabled: !!scholarship?._id,
     });
 
-    console.log(reviewsData)
+    const { data: isApplied, isLoading: loadingIsApplied, isPending: pendingIsApplied } = useQuery({
+        queryKey: ['is_applied_in_the_scholarship', scholarship?._id, user],
+        queryFn: async () => {
+            const res = await axiosInstance.get(`/application/checkUserApply?scholarship_id=${scholarship?._id}&userEmail=${user?.email}`)
+            return res.data;
+        },
+        enabled: !!scholarship?._id || !!user,
+    });
+
+    // console.log(isApplied)
 
 
     if (isLoading || isPending) {
@@ -71,20 +80,50 @@ const ScholarshipDetails = () => {
     }
 
     const applicationButton = <div className="text-end">
-        <Link
-            className=''
-            state={applicationData}
-            to={`/scholarshipApplicationPage/${scholarship?._id}`}
-        >
-            <StarBorder
-                as="button"
-                className=""
-                color="cyan"
-                speed="4s"
-            >
-                Apply Now
-            </StarBorder>
-        </Link>
+        {
+            (pendingIsApplied || loadingIsApplied) ?
+                <div className="">
+                    <StarBorder
+                        as="button"
+                        className=""
+                        color="cyan"
+                        speed="4s"
+                    >
+                        <span className="loading loading-lg loading-spinner text-success"></span>
+                    </StarBorder>
+                </div>
+                :
+                <>
+                    {
+                        isApplied?.is_applied ?
+                            <div className="mt-3">
+                                <Link
+                                    to={`/dashboard/myAppliedScholarships`}
+                                    className='btn btn-primary text-black'>
+                                    View Your Application
+                                </Link>
+                            </div>
+                            :
+                            <Link
+                                className=''
+                                state={applicationData}
+                                to={`/scholarshipApplicationPage/${scholarship?._id}`}
+                            >
+                                <StarBorder
+                                    as="button"
+                                    className=""
+                                    color="cyan"
+                                    speed="4s"
+                                >
+                                    Apply Now
+                                </StarBorder>
+                            </Link>
+
+                    }
+                </>
+        }
+
+
     </div>
     // console.log(location)
     return (
@@ -511,7 +550,7 @@ const ScholarshipDetails = () => {
                         <div className={`pt-5 mt-6 rounded-2xl bg-base-100`}>
 
                             <h2 className={boxTitle + ` ml-10`}>
-                               Our Studets Comments:
+                                Our Studets Comments:
                             </h2>
 
                             <ReviewMarquee reviews={reviewsData?.reviews}>

@@ -16,10 +16,10 @@ const DashboardHome = () => {
         return <LoadingPage />
     }
 
-    if (role === 'user') {
+    if (role === 'user'|| !role) {
         return <UserDashboard></UserDashboard>
     }
-    else if (role === 'rider') {
+    else if (role === 'publisher') {
         return <PublisherDashboard />
     }
     else if (role === 'admin') {

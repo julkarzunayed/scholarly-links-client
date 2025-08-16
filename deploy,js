@@ -1,12 +1,12 @@
 // surge dist
 // firebase deploy
-// 
+// vercel --prod
 
 
 
 // backend:   https://scholarly-links-server.vercel.app/
 
 
-// FrontEnd:  scholarly_link-by-julkarzunayed.surge.sh
+// FrontEnd_surge:  scholarly_link-by-julkarzunayed.surge.sh
 
-// FrontEnd: https://scholarly-link-auth.web.app
+// FrontEndFirebase: https://scholarly-link-auth.web.app

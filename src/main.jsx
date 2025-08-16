@@ -14,7 +14,9 @@ createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AuthProvider>
-          <RouterProvider router={router} />
+          <div className="bg-base-200">
+            <RouterProvider router={router} />
+          </div>
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>

@@ -33,6 +33,29 @@ const Login = () => {
             .catch(err => {
                 console.log(err);
                 setLoading(false);
+
+                if (err.code === 'auth/invalid-credential') {
+                    Swal.fire({
+                        title: "Oops!",
+                        html: `<strong>Email</strong> or <strong>Password</strong> might not correct!
+                            <br/>
+                            <br/>
+                            Check your email password is correct!
+                        `,
+                        icon: "error",
+                        showConfirmButton: true,
+                        // timer: 1700
+                    });
+
+                } else {
+                    Swal.fire({
+                        title: "Oops!",
+                        text: 'Some kind of Error occurred, Check your email password is correct',
+                        icon: "error",
+                        showConfirmButton: true,
+                        // timer: 1700
+                    });
+                }
             })
     }
     return (

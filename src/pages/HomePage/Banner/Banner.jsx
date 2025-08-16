@@ -24,9 +24,11 @@ const slidersData = [
     },
 ]
 
+const bgCircle = ' border border-base-300 rounded-bl-full rounded-tr-full transform'
+
 const Banner = () => {
     return (
-        <div className='relative p-5 overflow-hidden'>
+        <div className='relative p-5 overflow-hidden max-w-[1536px] mx-auto'>
             {/* <div className="flex ">
                 <div className="">
                     <div class="w-32 h-32 bg-blue-100 border border-blue-200 rounded-tl-full"></div>
@@ -53,20 +55,20 @@ const Banner = () => {
                     *:w-16 *:h-16
                     *:sm:w-20 *:sm:h-20"
                 >
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className={` ${bgCircle} rotate-0`}></div>
+                    <div className={` ${bgCircle} rotate-90`}></div>
+                    <div className={` ${bgCircle} rotate-0`}></div>
+                    <div className={` ${bgCircle} rotate-90`}></div>
 
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                    <div className={` ${bgCircle} rotate-90`}></div>
+                    <div className={` ${bgCircle} rotate-0`}></div>
+                    <div className={` ${bgCircle} rotate-90`}></div>
+                    <div className={` ${bgCircle} rotate-0`}></div>
 
                     <div className="  border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
                     <div className="  border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                    <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                    <div className={` ${bgCircle} rotate-0`}></div>
+                    <div className={` ${bgCircle} rotate-90`}></div>
                 </div>
                 <div className="flex overflow-hidden   bottom-0">
                     <div className="grid grid-cols-4 overflow-hidden
@@ -75,41 +77,41 @@ const Banner = () => {
                     *:w-16 *:h-16
                     *:sm:w-20 *:sm:h-20"
                     >
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
 
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
 
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
                     </div>
                     <div className="grid  grid-cols-4 
                     min-w-[calc(64px*4)] 
                     sm:min-w-[calc(80px*4)] 
                     *:w-16 *:h-16
-                    *:sm:w-20 *:sm:h-20 overflow-hidden"
+                    *:sm:w-20 *:sm:h-20 overflow-hidden  "
                     >
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
                         <div className="  border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
 
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
 
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-0"></div>
-                        <div className=" border border-accent rounded-bl-full rounded-tr-full transform rotate-90"></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
+                        <div className={` ${bgCircle} rotate-0`}></div>
+                        <div className={` ${bgCircle} rotate-90`}></div>
                     </div>
                 </div>
             </div>

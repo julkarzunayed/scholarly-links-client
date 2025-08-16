@@ -30,7 +30,7 @@ const ScholarshipApplicationPage = () => {
     const [imageFile, setImageFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [fileError, setFileError] = useState('');
-    const [applicationId, setApplicationId] = useState();
+    // const [applicationId, setApplicationId] = useState();
 
     const {
         register,
@@ -156,7 +156,7 @@ const ScholarshipApplicationPage = () => {
                 if (result?.data?.insertedId) {
                     applicationData._id = result?.data?.insertedId;
 
-                    setApplicationId(result?.data?.insertedId)
+                    // setApplicationId(result?.data?.insertedId)
                     setLoading(false)
                     Swal.fire({
                         title: "Application Submitted?",
