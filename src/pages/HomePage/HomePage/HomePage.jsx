@@ -5,6 +5,7 @@ import AdmissionBanner from '../AdmissinoBanner/AdmissionBanner';
 import HowItWorks from '../HowItWorks/HowItWorks';
 import StudentsReviews from '../StudentsReviews/StudentsReviews';
 import SubscribeUs from '../SubscribeUs/SubscribeUs';
+import InstitutionsCTA from './InstitutionsCTA/InstitutionsCTA';
 
 const HomePage = () => {
     return (
@@ -13,6 +14,7 @@ const HomePage = () => {
             <HowItWorks></HowItWorks>
             <TopScholarship></TopScholarship>
             <AdmissionBanner />
+            <InstitutionsCTA />
             <StudentsReviews />
             <SubscribeUs />
         </div>

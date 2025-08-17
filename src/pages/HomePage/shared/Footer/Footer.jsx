@@ -3,7 +3,7 @@ import ScholarlyLinkLogo from '../../../../components/ScholarlyLinkLogo/Scholarl
 
 const Footer = () => {
     return (
-        <footer className=" bg-gradient-to-r from-primary from-50%  to-teal-500 to-90% text-accent p-10 pt-36">
+        <footer className=" bg-gradient-to-r  from-primary from-50%  to-teal-500 to-90% text-accent p-10 pt-48 lg:pt-36">
             <div className="footer sm:footer-horizontal max-w-[1536px] mx-auto">
                 <aside>
                     <ScholarlyLinkLogo textColor={''} />

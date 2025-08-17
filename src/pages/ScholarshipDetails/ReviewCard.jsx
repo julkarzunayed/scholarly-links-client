@@ -23,7 +23,7 @@ const ReviewCard = ({ review }) => {
                     </p>
                 </div>
             </div>
-            <div className="my-4 text-gray-500">
+            <div className="my-4 text-gray-500 ">
                 <p className="italic font-montserrat ">
                     "{review?.comment}"
                 </p>
