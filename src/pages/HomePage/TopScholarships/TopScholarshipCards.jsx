@@ -20,10 +20,10 @@ const TopScholarshipCards = ({ scholarship }) => {
     });
 
     return (
-        <div className='rounded-2xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] hover:shadow- bg-base-100 flex flex-col'>
+        <div className='rounded-2xl box-shadow box-shadow-hover  overflow-hidden  bg-base-100 flex flex-col group'>
             {/* Top Photo */}
             <div
-                className="h-[170px] bg-cover bg-bottom bg-no-repeat rounded-t-2xl"
+                className="h-[200px]  bg-cover bg-bottom group-hover:scale-110 g-size-[150%_150%] transition-all duration-500 bg-no-repeat rounded-t-2xl"
                 style={{
                     backgroundImage: `url(${scholarship?.campus_image})`,
                 }}>
@@ -52,19 +52,19 @@ const TopScholarshipCards = ({ scholarship }) => {
                         {scholarship?.institute_city}, {scholarship?.institute_country}
                     </p>
                 </div>
-                <p className="flex mt-3">
+                <p className="flex mt-2">
                     <span className='font-semibold'>
                         {capitalizeFirstLetter(scholarship?.scholarship_category?.split('_')[0])} {scholarship?.scholarship_category?.split('_')[1]}
                     </span> <span className='border-l mx-2'></span> {scholarship?.scholarship_name}
                 </p>
-                <hr className='border-t border-base-300 my-2' />
-                <div className="mt-4 flex justify-between">
+                {/* <hr className='border-t border-base-300 my-2' /> */}
+                <div className="mt-4 flex justify-between items-center">
                     <span className='font-semibold'> Deadline: </span>
                     <span className="border text-accent border-secondary/20  px-3 py-1 rounded-2xl bg-secondary/10">
                         {ISoTimeToDateOnly(scholarship?.application_deadline)}
                     </span>
                 </div>
-                <div className="divider mb-1 border-b-0">Fees</div>
+                {/* <div className="divider mb-1 border-b-0">Fees</div> */}
                 <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                     <table className='table text-center *:p-0'>
                         <tbody>
@@ -76,7 +76,7 @@ const TopScholarshipCards = ({ scholarship }) => {
                                     <span className='font-semibold'>Tuition Fees: </span>
                                 </th>
                             </tr>
-                            <tr className='*:p-0.5 text-lg font-bold '>
+                            <tr className='*:p-0.5 text-lg font-bold text-secondary'>
                                 <td>
                                     {scholarship?.application_fee} $
                                 </td>

@@ -21,7 +21,7 @@ const AdmissionBanner = () => {
                             mb={'mb-2'}
                             mt={'mt-1'}
                         />
-                        <p className="text-primary-content max-w-lg">
+                        <p className="text-gray-500/90 max-w-lg">
                             Complete your profile and receive real admission offers to multiple schools, many with scholarships attached. Having schools compete for you this way takes the uncertainty out of the traditional application process.
                         </p>
                         <Link

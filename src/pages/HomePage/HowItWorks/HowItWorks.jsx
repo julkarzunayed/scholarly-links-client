@@ -36,7 +36,7 @@ const HowItWorks = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                 {
                     howItWorksData?.map((data, index) =>
-                        <div key={index} className="flex flex-col items-center gap-5 p-5 bg-base-100 rounded-2xl group hover:shadow-xl">
+                        <div key={index} className="flex flex-col items-center gap-5 p-5 bg-base-100 rounded-2xl group shadow hover:shadow-xl">
                             <div className={`${data.color} p-6 rounded-full flex items-center justify-center group-hover:scale-125 transition-all duration-300`}>
                                 <Icon icon={data?.icon} width="48" height="48" style={{ color: "#ffffff" }} />
                             </div>
