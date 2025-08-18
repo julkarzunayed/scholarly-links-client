@@ -81,6 +81,8 @@ const FeaturedAlumniSpotlights = () => {
                     color={'text-white'}
                     mb={'mb-3'}
                     mt={'mt-0'}
+                    paragraph={'Scholarship winner students lest year.'}
+                    paragraphColor={'text-gray-300'}
                 />
                 <Swiper
                     breakpoints={{

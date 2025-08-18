@@ -22,7 +22,7 @@ import { AiOutlineSetting } from "react-icons/ai";
 const {
     liClasses,
 } = {
-    liClasses: "flex items-center p-2 text-primary-content hover:bg-base-300 rounded-md"
+    liClasses: "flex items-center p-2 text-base-content hover:bg-base-300 rounded-md"
 }
 
 const DashboardLayout = () => {
@@ -30,9 +30,9 @@ const DashboardLayout = () => {
     const role = userData?.role || 'user'
 
     return (
-        <div className="drawer lg:drawer-open max-w-[1500px] mx-auto">
+        <div className="drawer lg:drawer-open  border">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content ">
+            <div className="drawer-content   max-w-[1536px] mx-auto w-full">
                 {/* NavBar */}
                 <div className="navbar bg-base-300 w-full lg:hidden">
                     <div className="flex-none ">
@@ -61,15 +61,15 @@ const DashboardLayout = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200  min-h-full w-72 p-4">
+                <ul className="menu bg-base-100 text-base-content min-h-full w-72 p-4">
                     {/* Sidebar content here */}
                     {
                         (!userLoading || !userPending) &&
                         <>
-                            <li><ScholarlyLinkLogo /></li>
-                            <li>
+                            <li><ScholarlyLinkLogo textColor={'text-base-content'} /></li>
+                            <li >
                                 <NavLink to={'/dashboard/home'} className={liClasses}>
-                                    <FaHome className="inline-block mr-2 text-lg" />
+                                    <FaHome className="inline-block mr-2 text-lg " />
                                     Home
                                 </NavLink>
                             </li>

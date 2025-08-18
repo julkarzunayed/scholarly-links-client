@@ -87,6 +87,7 @@ const StudentsReviews = () => {
                 mb={'mb-0'}
                 text1={'Our Students'}
                 text2={' Review'}
+                paragraph={"Let's Check what our scholarship holder says!"}
             />
             <ReviewMarquee
                 reviews={reviewData}

@@ -161,7 +161,7 @@ const AlumniSpotlights = () => {
                             Our Featured Alumni
                         </span>
                         {' '}
-                        <span className="text-secondary">
+                        <span className="text-accent">
                             Spotlights
                         </span>
                     </h2>
@@ -170,7 +170,7 @@ const AlumniSpotlights = () => {
                     {
                         alumniSpotlights?.map(story =>
 
-                            <div key={story.id} className="card bg-white shadow-lg overflow-hidden group rounded-3xl ">
+                            <div key={story.id} className="card bg-base-100/90 shadow-lg overflow-hidden group rounded-3xl ">
                                 <div className="avatar w-full transition-transform transform group-hover:scale-110">
                                     <div className="w-full ">
                                         <img
@@ -192,16 +192,16 @@ const AlumniSpotlights = () => {
                                             </div> */}
 
                                     {/* Quote */}
-                                    <p className="text-base italic text-gray-800 font-medium leading-relaxed">
+                                    <p className="text-base italic text-base-content/80 font-medium leading-relaxed">
                                         "{story.quote}"
                                     </p>
 
                                     {/* Alumni Details */}
                                     <div className="mt-4">
-                                        <h3 className="text-lg font-bold text-[#003366]">
+                                        <h3 className="text-lg font-bold text-base-content">
                                             {story.name}
                                         </h3>
-                                        <p className="text-sm text-gray-600">
+                                        <p className="text-sm text-gray-500">
                                             {story.university} · {story.field_of_study}
                                         </p>
                                         <p className="text-xs text-gray-500 mt-1">

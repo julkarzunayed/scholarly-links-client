@@ -12,7 +12,7 @@ const countriesNamePromise = fetch('../data/countryName.json').then(res => res.j
 const {
     fieldsetStyle,
 } = {
-    fieldsetStyle: "fieldset grid sm:grid-cols-2 sm:gap-x-5 bg-base-200 rounded-box  p-4"
+    fieldsetStyle: "fieldset grid sm:grid-cols-2 sm:gap-x-5 bg-base-300 rounded-box   p-4"
 }
 
 const checkboxStyle = {
@@ -126,7 +126,7 @@ const AddScholarship = () => {
             <h1 className="text-4xl font-bold text-center ">
                 Add a Scholarship
             </h1>
-            <div className="max-w-3xl  mx-auto">
+            <div className="   mx-auto">
                 <form
                     onSubmit={handleSubmit(onFormSubmit)}
                     className=''>
@@ -238,7 +238,7 @@ const AddScholarship = () => {
                                     type="file"
                                     onChange={onImageFileSelect}
                                     required
-                                    className="file-input w-full file-input-success" />
+                                    className="file-input w-full file-input-secondary" />
                                 {
                                     fileError &&
                                     <p className="text-red-500">
@@ -458,7 +458,7 @@ const AddScholarship = () => {
 
 
                         {/* Campus Info */}
-                        <fieldset className="fieldset bg-base-200 grid sm:grid-cols-2 md:grid-cols-3 sm:gap-x-5 rounded-box  p-4">
+                        <fieldset className="fieldset bg-base-300 grid sm:grid-cols-2 md:grid-cols-3 sm:gap-x-5 rounded-box  p-4">
                             <legend className="fieldset-legend">Campus Info</legend>
 
                             <label className="label">
@@ -674,7 +674,7 @@ const AddScholarship = () => {
                     <button
                         disabled={loading}
                         role='submit'
-                        className="btn btn-primary w-full text-black mt-4">
+                        className="btn btn-secondary w-full text-black mt-4">
                         Submit Scholarship
                         {
                             loading &&

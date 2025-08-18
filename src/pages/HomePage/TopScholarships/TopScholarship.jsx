@@ -40,6 +40,7 @@ const TopScholarship = () => {
                     <HomeSectionTitle
                         text1={'Top '}
                         text2={'Scholarships'}
+                        paragraph={'Recently add and lowest Application count'}
                     />
                 </div>
                 <div className="">

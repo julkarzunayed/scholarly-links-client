@@ -77,7 +77,7 @@ const ManageReviews = () => {
                         {reviews?.map(review =>
                             <div
                                 key={review?._id}
-                                className="rounded-xl shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] p-3 flex flex-col">
+                                className="rounded-xl bg-base-100/75 shadow-[0_0px_15px_10px_rgba(150,150,150,0.1),0_0px_20px_10px_rgba(50,50,50,0.06)] p-3 flex flex-col">
 
                                 {/* ------------Avatar----------- */}
                                 <div className="flex items-center *: gap-3 p-1">
@@ -129,12 +129,12 @@ const ManageReviews = () => {
                                 </div>
                                 {/* -----------Actions Buttons--------------- */}
                                 <div className="*:  *:p-2 *:hover:scale-y-105 *:font-bold *:hover:z-10 flex *:flex-1 mt-2">
-                                    <button className="bg-gray-100 border-0 text-gray-800 hover:bg-gray-800 hover:text-gray-100 hover:shadow-[0_0px_10px_10px_rgba(150,150,150,0.1),0_0px_12px_10px_rgba(50,50,50,0.06)] hover:shadow-accent "
+                                    <button className="bg-gray-100 border-0 text-gray-800 hover:bg-gray-800 hover:text-gray-100 hadow-[0_0px_10px_10px_rgba(150,150,150,0.1),0_0px_12px_10px_rgba(50,50,50,0.06)] hover:shadow-accent "
                                         onClick={() => handleDeleteReview(review)}
                                     >
                                         Delate
                                     </button>
-                                    <button className="bg-gray-100 border-0 text-gray-800 hover:bg-gray-800 hover:text-gray-100 hover:shadow-[0_0px_10px_10px_rgba(150,150,150,0.1),0_0px_12px_10px_rgba(50,50,50,0.06)] hover:shadow-accent  ">
+                                    <button className="bg-gray-100 border-0 text-gray-800 hover:bg-gray-800 hover:text-gray-100 hadow-[0_0px_10px_10px_rgba(150,150,150,0.1),0_0px_12px_10px_rgba(50,50,50,0.06)] hover:shadow-accent  ">
                                         Hide
                                     </button>
                                 </div>

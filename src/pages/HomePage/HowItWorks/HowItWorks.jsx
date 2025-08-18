@@ -32,6 +32,7 @@ const HowItWorks = () => {
             <HomeSectionTitle
                 text1={'How It '}
                 text2={'Works'}
+                paragraph={'Know how we work for students'}
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                 {
@@ -41,7 +42,7 @@ const HowItWorks = () => {
                                 <Icon icon={data?.icon} width="48" height="48" style={{ color: "#ffffff" }} />
                             </div>
                             <div className="">
-                                <h5 className="text-xl font-bold text-accent">
+                                <h5 className="text-xl font-bold text-base-content">
                                     {
                                         data?.title
                                     }

@@ -43,11 +43,11 @@ const FeaturedInstitutions = () => {
         <section className=" py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-[1536px] mx-auto">
                 {/* Section Header */}
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl font-extrabold text-[#003366] sm:text-5xl">
+                <div className="text- mb-12">
+                    <h2 className="text-4xl font-extrabold text-base-content sm:text-5xl">
                         Featured Institutions
                     </h2>
-                    <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
+                    <p className="mt-4 text-lg text-gray-500 max-w-2xl ">
                         Explore scholarships from some of the world's most prestigious universities.
                     </p>
                 </div>
@@ -69,8 +69,8 @@ const FeaturedInstitutions = () => {
                                     className="mx-auto translate-y-[50%] absolute z-20 right-2 bottom-0 w-14 border border-secondary" />
                             </figure>
                             <div className=" p-4">
-                                <h3 className=" text-2xl font-bold text-accent">{institution.name}</h3>
-                                <p className=" text-sm text-gray-600 mt-2">{institution.description}</p>
+                                <h3 className=" text-2xl font-bold text-base-content">{institution.name}</h3>
+                                <p className=" text-sm text-gray-500 mt-2">{institution.description}</p>
                             </div>
                         </div>
 

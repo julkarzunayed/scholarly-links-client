@@ -109,7 +109,7 @@ const MyProfile = () => {
         <div className='p-5 '>
             {/* Profile section Starts */}
             <div className="relative   min-h-[308px] shadow-lg pb-5 rounded-2xl">
-                <div className="h-[150px] overflow-hidden bg-secondary absolute rounded-t-3xl w-full">
+                <div className="h-[150px] md:h-44 overflow-hidden bg-primary bg-gradient-to-r from-primary from-50%  to-teal-500 to-90% absolute rounded-t-3xl w-full">
                     <div className="h-32 w-32 bg-orange-400 opacity shadow- rounded-full absolute right-0 transform translate-x-1/2">
 
                     </div>
