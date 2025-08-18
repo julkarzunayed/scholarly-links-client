@@ -29,6 +29,7 @@ import Payment from '../pages/Dashboard/Payment/Payment';
 import ManageApplications from '../pages/Dashboard/ManageApplications/ManageApplications';
 import MyReviews from '../pages/Dashboard/MyReviews/MyReviews';
 import ManageReviews from '../pages/Dashboard/ManageReviews/ManageReviews';
+import AlumniSpotlights from '../pages/AlumniSpotlights/AlumniSpotlights';
 
 
 
@@ -47,15 +48,17 @@ const router = createBrowserRouter([
             },
             {
                 path: 'scholarshipDetails/:id',
-                element: <PrivetRouter>
-                    <ScholarshipDetails />
-                </PrivetRouter>
+                element: <ScholarshipDetails />
             },
             {
                 path: 'scholarshipApplicationPage/:id',
                 element: <PrivetRouter>
                     <ScholarshipApplicationPage />
                 </PrivetRouter>
+            },
+            {
+                path: 'alumniSpotlights',
+                Component: AlumniSpotlights
             }
         ]
     },

@@ -7,6 +7,7 @@ import StudentsReviews from '../StudentsReviews/StudentsReviews';
 import SubscribeUs from '../SubscribeUs/SubscribeUs';
 import InstitutionsCTA from './InstitutionsCTA/InstitutionsCTA';
 import FeaturedAlumniSpotlights from '../FeaturedAlumniSpotlights/FeaturedAlumniSpotlights';
+import FeaturedInstitutions from '../FeaturedInstitutions/FeaturedInstitutions';
 
 const HomePage = () => {
     return (
@@ -15,6 +16,7 @@ const HomePage = () => {
                 <Banner></Banner>
                 <HowItWorks></HowItWorks>
                 <TopScholarship></TopScholarship>
+                <FeaturedInstitutions />
                 <AdmissionBanner />
             </div>
             <FeaturedAlumniSpotlights />

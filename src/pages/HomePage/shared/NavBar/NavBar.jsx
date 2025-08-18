@@ -12,6 +12,7 @@ const links = <>
     <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/allScholarship'}>All Scholarships</NavLink></li>
     <li><NavLink to={'/dashboard/home'}>Dashboard</NavLink></li>
+    <li><NavLink to={'/alumniSpotlights'}>Alumni Spotlights</NavLink></li>
 </>
 
 const NavBar = () => {

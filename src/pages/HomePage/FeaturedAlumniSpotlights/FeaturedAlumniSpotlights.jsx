@@ -70,7 +70,7 @@ const alumniSpotlights = [
 const FeaturedAlumniSpotlights = () => {
     return (
         <div
-            className='pt-20 pb-14 px-2  bg-center bg- bg-no-repeat bg-fixed mb-14 bg-size-[150%_150%] hover:bg-size-[200%_200%] transition-all  duration-1000 '
+            className='pt-20 pb-14 px-2  bg-center bg-fixed mb-14 lg:bg-size-[150%_150%] hover:bg-size-[200%_200%] transition-all  duration-1000 '
             style={{
                 backgroundImage: `linear-gradient(to bottom, #155DFC90, #14b8a640), url(${background}) `
             }}>
@@ -83,8 +83,30 @@ const FeaturedAlumniSpotlights = () => {
                     mt={'mt-0'}
                 />
                 <Swiper
-                    slidesPerView={4}
-                    spaceBetween={15}
+                    breakpoints={{
+                        // When window width is >= 320px, display 1 slide per view
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        // When window width is >= 640px (md breakpoint in Tailwind), display 2 slides
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        // When window width is >= 768px (lg breakpoint), display 3 slides
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 30,
+                        },
+                        // When window width is >= 1024px, display 4 slides
+                        1024: {
+                            slidesPerView: 4,
+                            spaceBetween: 15,
+                        },
+                    }}
+                    // slidesPerView={4}
+                    // spaceBetween={15}
                     pagination={{
                         clickable: true,
                     }}
@@ -143,14 +165,14 @@ const FeaturedAlumniSpotlights = () => {
                 </Swiper>
                 <div className="mt-3 flex">
                     <Link
-                        to={`dashboard/applyToAddScholarship`}
+                        to={`/alumniSpotlights`}
                         className='w-full lg:max-w-sm rounded-full hover:scale-y-105 bg-secondary transition-all duration-1000 py-2 flex items-center justify-center gap-2 font-bold text-lg text-accent bg-size-[500%_100%] bg-gradient-to-r from-secondary from-50%  to-accent to-50% hover:bg-right hover:text-white hover:bg-white shadow-xl'
                         style={{
                             boxShadow: 'inset 4px 4px 6px #00000050,inset -4px -4px 5px #ffffff85',
 
                         }}
                     >
-                        <span className="">Post a Scholarship </span>
+                        <span className="">Explore our Spotlight </span>
                         <span className=' flex items-center justify-center'><Icon icon="majesticons:arrow-right-line" width="24" height="24" /></span>
                     </Link>
                 </div>

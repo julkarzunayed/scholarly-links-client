@@ -1,6 +1,14 @@
 import React from 'react';
-//   AlumniSpotlights
+//   FeaturedAlumniSpotlights
 //   alumniSpotlights
+import graduate01 from "../../assets/graduates/graduate_student_male.jpg";
+import graduate02 from "../../assets/graduates/graduate_student_male_01.jpg";
+import graduate03 from "../../assets/graduates/graduate_student_male_02.jpg";
+import graduateGirl from "../../assets/graduates/happy-student-with-graduation-hat-diploma-grey.jpg";
+import background from "../../assets/graduates/graduate_students_many.jpg"
+
+
+
 const alumniSpotlights = [
     {
         "id": "1",
@@ -9,7 +17,7 @@ const alumniSpotlights = [
         "field_of_study": "Computer Science",
         "scholarship_name": "Tech Innovators Scholarship",
         "quote": "This platform made finding the perfect scholarship so easy. It changed my life!",
-        "photo": "https://placehold.co/100x100/4EBFDD/FFFFFF?text=SC"
+        "photo": graduate01
     },
     {
         "id": "2",
@@ -18,7 +26,7 @@ const alumniSpotlights = [
         "field_of_study": "Mechanical Engineering",
         "scholarship_name": "Stanford Merit Award",
         "quote": "I found a scholarship I didn't even know existed. It's an invaluable resource for students.",
-        "photo": "https://placehold.co/100x100/FF4500/FFFFFF?text=AR"
+        "photo": graduate02
     },
     {
         "id": "3",
@@ -27,7 +35,7 @@ const alumniSpotlights = [
         "field_of_study": "Literature",
         "scholarship_name": "Cambridge Global Excellence Scholarship",
         "quote": "The guidance and resources provided here were key to my successful application. Thank you!",
-        "photo": "https://placehold.co/100x100/003366/FFFFFF?text=CD"
+        "photo": graduate03
     },
     {
         "id": "4",
@@ -36,7 +44,7 @@ const alumniSpotlights = [
         "field_of_study": "Public Policy",
         "scholarship_name": "Toronto Scholars Program",
         "quote": "Without this website, my dream of studying abroad would not have been possible. Absolutely fantastic!",
-        "photo": "https://placehold.co/100x100/F0A800/FFFFFF?text=OK"
+        "photo": graduateGirl
     },
     {
         "id": "5",
@@ -45,7 +53,7 @@ const alumniSpotlights = [
         "field_of_study": "Robotics",
         "scholarship_name": "ETH Zurich Excellence Scholarship",
         "quote": "The platform is incredibly user-friendly and helped me filter down to scholarships that truly matched my profile.",
-        "photo": "https://placehold.co/100x100/B2EBF2/000000?text=IR"
+        "photo": "https://i.ibb.co.com/qMzbKzQB/single-parson-pic-02.jpg"
     },
     {
         "id": "6",
@@ -54,7 +62,7 @@ const alumniSpotlights = [
         "field_of_study": "Medicine",
         "scholarship_name": "Sydney Global Scholarship",
         "quote": "A single place for all my scholarship needs. It saved me countless hours of searching.",
-        "photo": "https://placehold.co/100x100/FF6347/FFFFFF?text=MB"
+        "photo": "https://i.ibb.co.com/93bnq2tn/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-cro.jpg"
     },
     {
         "id": "7",
@@ -63,7 +71,7 @@ const alumniSpotlights = [
         "field_of_study": "Law",
         "scholarship_name": "King's College Leadership Award",
         "quote": "The application tips were so helpful. I felt prepared and confident throughout the process.",
-        "photo": "https://placehold.co/100x100/6A5ACD/FFFFFF?text=LA"
+        "photo": "https://i.ibb.co.com/5X7RbZSg/ai-generated-a-woman-in-a-doctor-s-coat-and-glasses-photo.jpg"
     },
     {
         "id": "8",
@@ -81,7 +89,7 @@ const alumniSpotlights = [
         "field_of_study": "Film Studies",
         "scholarship_name": "NYU Global Scholars Program",
         "quote": "I am so grateful for the opportunity this platform provided. It's a game-changer for students.",
-        "photo": "https://placehold.co/100x100/DA70D6/FFFFFF?text=MG"
+        "photo": "https://i.ibb.co.com/HDkB810W/banner-image-2-1.jpg"
     },
     {
         "id": "10",
@@ -99,7 +107,7 @@ const alumniSpotlights = [
         "field_of_study": "Art History",
         "scholarship_name": "Melbourne Future Leaders Award",
         "quote": "A very intuitive platform with a great selection of scholarships. It made a huge difference.",
-        "photo": "https://placehold.co/100x100/D2B48C/FFFFFF?text=OW"
+        "photo": "https://i.ibb.co.com/R4bhtdx3/ai-generated-a-woman-in-a-doctor-s-coat-and-glasses-photo.jpg"
     },
     {
         "id": "12",
@@ -108,7 +116,7 @@ const alumniSpotlights = [
         "field_of_study": "Business Management",
         "scholarship_name": "CMU Innovators Scholarship",
         "quote": "I was overwhelmed by the scholarship search until I found this website. It simplified everything!",
-        "photo": "https://placehold.co/100x100/4682B4/FFFFFF?text=SH"
+        "photo": "https://i.ibb.co.com/Qvg4xttN/ai-student-1.png"
     },
     {
         "id": "13",
@@ -126,7 +134,7 @@ const alumniSpotlights = [
         "field_of_study": "Architecture",
         "scholarship_name": "UBC Global Talent Scholarship",
         "quote": "The platform connected me with opportunities I wouldn't have found otherwise. Truly a lifesaver.",
-        "photo": "https://placehold.co/100x100/808080/FFFFFF?text=CJ"
+        "photo": "https://i.ibb.co.com/XfRzjTXz/ai-student-3.png"
     },
     {
         "id": "15",
@@ -141,8 +149,73 @@ const alumniSpotlights = [
 
 const AlumniSpotlights = () => {
     return (
-        <div>
+        <div className='min-h-screen bg-base-200 py-14 px-2 md:px-3 bg-cover bg-center bg-fixed'
+            style={{
+                backgroundImage: `linear-gradient(to bottom, #00336650, #00336630), url(${background}) `
+            }}
+        >
+            <div className="max-w-[1536px] mx-auto">
+                <div className="bg-gradient-to-r from-primary from-60%  to-teal-500 to-90% p-6 mb-5 rounded">
+                    <h2 className="font-bold text-4xl">
+                        <span className='text-white'>
+                            Our Featured Alumni
+                        </span>
+                        {' '}
+                        <span className="text-secondary">
+                            Spotlights
+                        </span>
+                    </h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    {
+                        alumniSpotlights?.map(story =>
 
+                            <div key={story.id} className="card bg-white shadow-lg overflow-hidden group rounded-3xl ">
+                                <div className="avatar w-full transition-transform transform group-hover:scale-110">
+                                    <div className="w-full ">
+                                        <img
+                                            src={story.photo}
+                                            alt={`${story.name}'s photo`}
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex p-6 flex-col items-center text-center">
+                                    {/* Photo with a colored border from your color scheme */}
+
+                                    {/* <div className="h- overflow-hidden border-4 border-[#FF4500]">
+                                                <img
+                                                    src={story.photo}
+                                                    alt={`${story.name}'s photo`}
+                                                    className="object-cover w-full h-full"
+                                                />
+                                            </div> */}
+
+                                    {/* Quote */}
+                                    <p className="text-base italic text-gray-800 font-medium leading-relaxed">
+                                        "{story.quote}"
+                                    </p>
+
+                                    {/* Alumni Details */}
+                                    <div className="mt-4">
+                                        <h3 className="text-lg font-bold text-[#003366]">
+                                            {story.name}
+                                        </h3>
+                                        <p className="text-sm text-gray-600">
+                                            {story.university} · {story.field_of_study}
+                                        </p>
+                                        <p className="text-xs text-gray-500 mt-1">
+                                            Recipient of the: <span className="font-semibold">{story.scholarship_name}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        )
+                    }
+                </div>
+            </div>
         </div>
     );
 };
