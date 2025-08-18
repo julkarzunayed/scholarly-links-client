@@ -17,7 +17,11 @@ const SubscribeUs = () => {
     return (
         <div className='max-w-[1536px] mx-auto flex flex-col lg:flex-row *:flex-1 gap-10 lg:gap-5 items-center translate-y-[50%] rounded-4xl px-10 py-16 bg-accent bg-gradient-to- from-emerald-500/35   to-primary/35 '>
             <div className="">
-                <h2 className="text-transparent text-center lg:text-left font-bold text-5xl bg-gradient-to-r from-sky-500 from-25%  to-teal-500 to-45%  inline-block bg-clip-text">
+                <h2 className="text-transparent text-center lg:text-left font-bold text-5xl bg-gradient-to-r from-sky-500 from-25%  to-teal-500 to-45%  inline-block bg-clip-text "
+                style={{
+                    // textShadow: 'inset 4px 4px 6px #00000050,inset -4px -4px 5px #ffffff85'
+                }}
+                >
                     Get Lates Updates about ScholarlyLink
                 </h2>
                 {/* <HomeSectionTitle

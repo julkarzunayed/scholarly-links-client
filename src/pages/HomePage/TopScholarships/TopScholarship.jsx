@@ -33,7 +33,7 @@ const TopScholarship = () => {
     // console.log(filteredScholarships)
 
     return (
-        <div>
+        <div className=''>
             <div className="max-w-[1536px] mx-auto">
                 <div className="p-2  flex flex-col sm:flex-row gap-2 justify-between items-center mt-2">
                     {/* ----------title */}

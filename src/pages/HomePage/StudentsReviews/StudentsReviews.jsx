@@ -84,6 +84,7 @@ const StudentsReviews = () => {
     return (
         <div className='max-w-[1536px] mx-auto'>
             <HomeSectionTitle
+                mb={'mb-0'}
                 text1={'Our Students'}
                 text2={' Review'}
             />

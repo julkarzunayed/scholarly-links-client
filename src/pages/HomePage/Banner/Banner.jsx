@@ -28,7 +28,7 @@ const bgCircle = ' border border-base-300 rounded-bl-full rounded-tr-full transf
 
 const Banner = () => {
     return (
-        <div className='relative pt-10 p-3 overflow-hidden max-w-[1536px] mx-auto'>
+        <div className='relative pt-10 overflow-hidden max-w-[1536px] mx-auto'>
             {/* <div className="flex ">
                 <div className="">
                     <div class="w-32 h-32 bg-blue-100 border border-blue-200 rounded-tl-full"></div>

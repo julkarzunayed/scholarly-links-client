@@ -7,7 +7,7 @@ import HomeSectionTitle from '../../../components/HomeSectionTitle/HomeSectionTi
 
 const AdmissionBanner = () => {
     return (
-        <div className='py-10 p-2 max-w-[1536px] mx-auto'>
+        <div className='pt-10 max-w-[1536px] mx-auto' >
             <div className="flex flex-col sm:flex-row *:flex-1 gap-5">
 
                 {/* ------Content Box--------- */}
@@ -18,6 +18,7 @@ const AdmissionBanner = () => {
                             text1={'Choose A Right Scholarship'}
                             text2={" For You"}
                             // color={ }
+                            textSize={'text-5xl'}
                             mb={'mb-2'}
                             mt={'mt-1'}
                         />

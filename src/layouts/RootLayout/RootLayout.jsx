@@ -14,7 +14,7 @@ const RootLayout = () => {
                 <div className="drawer-content">
                     {/* Page content here */}
                     <NavBar></NavBar>
-                    <div className="px-2">
+                    <div className="">
                         <Outlet></Outlet>
                     </div>
                     <Footer></Footer>
